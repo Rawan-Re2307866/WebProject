@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post</title>
 </head>
+<script src="comment.js"></script>
 <body style="background-color: rgba(198, 145, 219, 0.84);">
     <header>
         <a href="profile.html" style="color: black; text-decoration: none;">
-            <img src="\images\prof1.png" alt="user" width="10%" style="border-radius: 3rem;">
+            <img src="\images\prof1.png" alt="user" width="10%" style="border-radius: 10rem;">
              username
         </a>
     </header>
@@ -20,7 +21,7 @@
         <section id="display-comment">
             <h5>Comments</h5>
 
-            <div id="comments-container">
+            <div id="comments" style="max-height: 300px; overflow-y: auto;">
 
 
             </div>
@@ -30,8 +31,8 @@
         <section id="submit-comment">
             <form id="comment-here">
                 <input type="text" id="comment" name="comment" placeholder="comment here ..." style="border-radius: 3rem; border: none;">
-                    <button type="submit" style="border-radius: 3rem; width: 2rem; background:none; border:none; cursor:pointer;">
-                        <img src="/images/submit-comment.png" alt="submit" width="20rem">
+                    <button type="submit" style="border-radius: 3rem; width: 2rem; background:none; border:none;cursor:pointer;">
+                        <img src="/images/submit-comment.png" alt="submit" width="100%">
                     </button>
             </form>
         </section>
