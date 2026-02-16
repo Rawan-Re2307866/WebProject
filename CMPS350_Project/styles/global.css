@@ -1,0 +1,26 @@
+:root {
+  
+  --color-primary:   #a2bedc ; 
+  --color-primary-light: #e8eff7; 
+  --color-primary-dark: #38325a;  
+
+
+  --color-accent: #545ca1;        
+  --color-accent-soft: #ae8cc0;   
+
+
+  --color-text-dark: #042440;
+  --color-text-light: #ffffff;
+
+  --color-bg-main: #e8eff7 ;      
+
+
+  --color-btn-primary: #474071;
+  --color-btn-light: #706daa;
+  --color-btn-primary-hover: #706daa;
+  --color-btn-primary-hover-light: #474071;
+
+  --color-pfp-primary: #a2bedc;
+
+  --color-border: #38325a ;
+}
