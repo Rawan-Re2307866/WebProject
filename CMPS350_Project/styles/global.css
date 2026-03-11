@@ -337,3 +337,150 @@ main {
   transform: scale(0.9);
 }
 
+/*
+Post ----------------------------------------------------------------------------------------------------------------
+*/
+
+.post-body 
+{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 92vh;
+}
+
+a 
+{
+  color: var(--color-text-dark);
+  text-decoration: none;
+}
+
+#post 
+{
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 1.25rem;
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* main */
+.post-page
+{
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 3fr 1fr;
+  grid-template-areas: 
+  "content-part comments-part";
+  margin: 3rem;
+  flex: 1;
+  height: 100%;
+}
+
+.content-part,
+.comments-part {
+  width: 100%;
+  height: 100%;
+}
+
+/* section 1 */
+.content-part
+{
+  grid-area: content-part;
+}
+
+.content {
+  background: #f2f4f7;
+
+
+  border-radius: 1rem;
+  min-height: 14rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--color-text-dark);
+
+  font-size: 0.95rem;
+
+  margin-bottom: 0.8rem;
+
+  width: 100%;
+  height: 80%;
+  
+}
+
+/* section 2*/
+.comments-part
+{
+  grid-area: comments-part;
+  display: flex;
+  flex-direction: column;
+}
+
+.comments-part > article {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.display-comments
+{
+  background-color:#9999990a;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-top: 3rem;
+  max-height: 25rem;
+  overflow-y: auto;
+}
+
+.submit-comment {
+  margin-top: 0.5rem;
+}
+
+.comment-here
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-top: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+#comment
+{
+  border: none;
+  margin-left: 0.5rem;
+  flex-grow: 1;
+}
+
+
+/* In Mobile */
+@media (max-width: 480px) 
+{
+
+  .post-page 
+  {
+    margin: 0.5rem;
+    grid-template-rows: 2fr 1fr;
+    grid-template-columns: 1fr; 
+    grid-template-areas:
+    "content-part"
+    "comments-part";
+    gap: 0.25rem;
+    padding: 1rem;
+  }
+
+  .display-comments
+  {
+    max-height: 10rem;
+  } 
+
+}
+
