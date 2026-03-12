@@ -28,6 +28,7 @@ Login Page ---------------------------------------------------------------------
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--color-primary-dark);
 }
 
 .login-header img {
@@ -35,7 +36,7 @@ Login Page ---------------------------------------------------------------------
   height: auto;
 }
 
-body .login-body {
+.login-body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -60,7 +61,6 @@ body .login-body {
 .log-in-buttons {
   width: 100%;
   max-width: 400px;
-  border-radius: 20%;
 }
 
 .login-form {
@@ -71,6 +71,17 @@ body .login-body {
   padding: 2rem 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: slideUp 0.5s ease-out;
+}
+@keyframes slideUp {
+  from{
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .login-form label {
@@ -81,17 +92,21 @@ body .login-body {
 }
 
 .login-form input {
-  padding: 0.8rem 1rem;
-  border: 2px solid var(--color-border);
-  border-radius: 8px;
-  font-size: 0.95rem;
-  transition: border-color 0.3s;
+  padding: 0.6rem 0.8rem;
+  border: 3px solid var(--color-border);
+  border-radius: 50px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
   background: var(--color-bg-main);
+  height: 20%;
+  width: 100%; 
+  box-sizing: border-box;
 }
-
 .login-form input:focus {
   outline: none;
   border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(84, 92, 161, 0.1);  
+  transform: translateY(-2px); 
 }
 
 .login-form input::placeholder {
@@ -103,7 +118,7 @@ body .login-body {
   color: var(--color-text-light);
   border: none;
   padding: 0.9rem;
-  border-radius: 8px;
+  border-radius: 20px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -119,6 +134,18 @@ body .login-body {
   text-align: center;
   padding: 1.5rem;
   background: var(--color-primary-light);
+  position: relative;
+  display: inline-block;
+}
+.login-body footer a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-btn-primary);
+  transition: width 0.3s ease;
 }
 
 .login-body footer a {
@@ -126,30 +153,59 @@ body .login-body {
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .login-body footer a:hover {
   color: var(--color-btn-primary);
-  text-decoration: underline;
 }
 
-.signup-link {
+.signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
   text-align: center;
   margin-top: 1rem;
   color: var(--color-text-dark);
   font-size: 0.9rem;
 }
+.signup p{
+  display: inline;
+  margin-right: 0.3rem ;
+  color: var(--color-btn-primary-hover);
+}
 
-.signup-link a {
+.signup a {
   color: var(--color-accent);
-  text-decoration: none;
   font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+  display: inline-block;
+  align-self: center;
+
+}
+.signup a::after{
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 0;
+  height: 5px;
+  background: var(--color-accent);
+  transition: width 0.3s ease;
+  border-radius: 20px;
+}
+.signup a:hover::after{
+  width: 100%;
 }
 
-.signup-link a:hover {
-  text-decoration: underline;
+.signup a:hover {
+  color: var(--color-btn-primary);
 }
+
+
 
 
 /*
@@ -223,7 +279,7 @@ main {
   justify-content: space-between;
 }
 
-#username {
+.profile-username {
   font-size: 1rem;
   font-weight: 700;
   color: var(--color-text-dark);
@@ -346,8 +402,7 @@ main {
     padding-bottom: 0;
     overflow-y: auto;  
   }
-  
-  /* Bottom nav becomes left sidebar */
+
   body:has(.bottom-nav) .bottom-nav {
     grid-column: 1;
     grid-row: 1 / -1;  
@@ -377,6 +432,9 @@ main {
 
   .login-form {
     padding: 2.5rem;
+  }
+  .login-buttons{
+    min-width: 60%;
   }
 
 }
