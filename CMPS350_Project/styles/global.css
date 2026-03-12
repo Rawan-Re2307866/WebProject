@@ -22,6 +22,146 @@
 }
 
 /*
+Login Page ----------------------------------------------------------------------------------------------------------------
+*/
+.login-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-header img {
+  max-width: 100px;
+  height: auto;
+}
+
+body .login-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.login-body main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.login-body main h2 {
+  color: var(--color-text-dark);
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.log-in-buttons {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: white;
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-form label {
+  color: var(--color-text-dark);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: -0.5rem;
+}
+
+.login-form input {
+  padding: 0.8rem 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s;
+  background: var(--color-bg-main);
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.login-form input::placeholder {
+  color: #999;
+}
+
+.login-btn {
+  background: var(--color-btn-primary);
+  color: var(--color-text-light);
+  border: none;
+  padding: 0.9rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 0.5rem;
+}
+
+.login-btn:hover {
+  background: var(--color-btn-primary-hover);
+}
+
+.login-body footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: var(--color-primary-light);
+}
+
+.login-body footer a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.login-body footer a:hover {
+  color: var(--color-btn-primary);
+  text-decoration: underline;
+}
+
+.signup-link {
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--color-text-dark);
+  font-size: 0.9rem;
+}
+
+.signup-link a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+
+@media screen and (min-width: 600px) {
+  .login-body main h2 {
+    font-size: 2rem;
+  }
+  
+  .login-form {
+      padding: 2.5rem;
+  }
+}
+
+/*
 Profile ----------------------------------------------------------------------------------------------------------------
 */
 * {
@@ -35,15 +175,15 @@ body {
   background: var(--color-bg-main);
 }
 
-header {
+.profile-header {
   background-color: var(--color-primary-dark);
   width: 100%;
-  padding: 1rem;
+  padding: 0 1rem;
   height: 50px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
-
 .logo {
   width: 20rem;
   max-width: 5rem;
@@ -59,23 +199,22 @@ main {
   position: relative;
 }
 
-.profile-header {
+.profile-background {
   height: 9rem;
   background: var(--color-accent);
 }
+.profile-img-wrapper{
+  position:absolute;
+  top:6rem;
+  left:1.5rem;
+}
 
-.profile-img {
-  width: 6rem;
-  height: 6rem;
-  border-radius: 50%;
-  position: absolute;
-
-  top: 6rem;
-  left: 1.5rem;
-
-  border: 0.25rem solid white;
-  background: var(--color-pfp-primary);
-  object-fit: cover;
+.profile-img{
+  width:6rem;
+  height:6rem;
+  border-radius:50%;
+  border:0.25rem solid white;
+  object-fit:cover;
 }
 
 .profile-content {
@@ -97,13 +236,12 @@ main {
   padding: 30px 10px;
 }
 
-.stats-and-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.5rem;
+.stats-and-btn{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0.5rem;
 }
-
 .profile-stats {
   display: flex;
   gap: 1.5rem;
@@ -138,6 +276,7 @@ main {
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s;
+  width: 100%;
 }
 
 .edit-btn:hover {
@@ -149,7 +288,68 @@ main {
   font-size: 0.85rem;
   color: #999;
 }
+.posts{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 20px 5px 0px;
+  
+}
+.post-profile{
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--color-border);
+  background: var(--color-accent);
+}
+.post-profile img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+@media(min-width: 768px){
+ .profile-img-wrapper{
+    top:5rem;
+    left:5rem;
+  }
 
+  .profile-img{
+    width:8rem;
+    height:8rem;
+  }
+.profile-content,
+.posts{
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.stats-and-btn{
+    align-items:flex-end;
+  }
+}
+@media(min-width: 1080px){
+  .profile-header{
+    justify-content:flex-start;
+    padding-left:0;
+  }
+.profile-img-wrapper{
+    top:4rem;
+    left:50%;
+    transform:translateX(-50%);
+  }
+
+  .profile-img{
+    width:10rem;
+    height:10rem;
+  }
+  .profile-top-row,.bio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .posts{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+}
 /*
 FEED ----------------------------------------------------------------------------------------------------------------
 */
@@ -335,4 +535,156 @@ main {
 .like-btn:active svg,
 .comment-btn:active svg {
   transform: scale(0.9);
+<<<<<<< HEAD
 }
+=======
+}
+
+/*
+Post ----------------------------------------------------------------------------------------------------------------
+*/
+
+.post-body 
+{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 92vh;
+}
+
+a 
+{
+  color: var(--color-text-dark);
+  text-decoration: none;
+}
+
+#post 
+{
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 1.25rem;
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* main */
+.post-page
+{
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 3fr 1fr;
+  grid-template-areas: 
+  "content-part comments-part";
+  margin: 3rem;
+  flex: 1;
+  height: 100%;
+}
+
+.content-part,
+.comments-part {
+  width: 100%;
+  height: 100%;
+}
+
+/* section 1 */
+.content-part
+{
+  grid-area: content-part;
+}
+
+.content {
+  background: #f2f4f7;
+
+
+  border-radius: 1rem;
+  min-height: 14rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--color-text-dark);
+
+  font-size: 0.95rem;
+
+  margin-bottom: 0.8rem;
+
+  width: 100%;
+  height: 80%;
+  
+}
+
+/* section 2*/
+.comments-part
+{
+  grid-area: comments-part;
+  display: flex;
+  flex-direction: column;
+}
+
+.comments-part > article {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.display-comments
+{
+  background-color:#9999990a;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-top: 3rem;
+  max-height: 25rem;
+  overflow-y: auto;
+}
+
+.submit-comment {
+  margin-top: 0.5rem;
+}
+
+.comment-here
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-top: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+#comment
+{
+  border: none;
+  margin-left: 0.5rem;
+  flex-grow: 1;
+}
+
+
+/* In Mobile */
+@media (max-width: 480px) 
+{
+
+  .post-page 
+  {
+    margin: 0.5rem;
+    grid-template-rows: 2fr 1fr;
+    grid-template-columns: 1fr; 
+    grid-template-areas:
+    "content-part"
+    "comments-part";
+    gap: 0.25rem;
+    padding: 1rem;
+  }
+
+  .display-comments
+  {
+    max-height: 10rem;
+  } 
+
+}
+
+>>>>>>> f2db6988fe34ef10196e4c1967cb419770f4a341

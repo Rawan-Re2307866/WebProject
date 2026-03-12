@@ -8,74 +8,112 @@
     <link rel="stylesheet" href="styles/profile.css">
 
 </head>
+
 <script src="comment.js"></script>
-<body style="background-color: var(--color-accent-soft);">
-    <header>
-        <a href="profile.html" style="color: var(--color-text-dark); text-decoration: none;">
-            <img src="\images\prof1.png" alt="user" class="circle-img" width="10%">
-             username
-        </a>
+
+<body class="post-body">
+    
+    <header class="top-bar">
+        <img src="images\logo.png" alt="a r squared" class="logo">
     </header>
-    <main>
-        <section id="post">
 
-        </section>
+    <main class="post-page">
 
-        <section id="display-comment">
-            <h5 style="color: var(--color-text-dark);">Comments</h5>
-
-            <div id="comments" style="max-height: 300px; overflow-y: auto;">
-
-
-            </div>
-
-        </section>
-
-        <section id="submit-comment">
-            <form id="comment-here">
-                <input type="text" id="comment" name="comment" placeholder="comment here ..." style="border-radius: 3rem; border: none;">
-                <button type="submit" style="border-radius: 3rem; width: 2rem; background:none; border:none;cursor:pointer;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-up-icon lucide-arrow-big-up">
-                        <path d="M9 13a1 1 0 0 0-1-1H5.061a1 1 0 0 1-.75-1.811l6.836-6.835a1.207 1.207 0 0 1 1.707 0l6.835 6.835a1 1 0 0 1-.75 1.811H16a1 1 0 0 0-1 1v6a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1z"/>
-                    </svg>
-                </button>
-            </form>
-        </section>
-    </main>
-    <footer>
-        <table>
-            <tr>
-                <td>
-                    <a href="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M4 6l16 0" /><path d="M4 12l16 0" />
-                            <path d="M4 18l16 0" />
-                        </svg>
-                    </a>
-                </td>
-                <td>
-                    <a href="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M12 5l0 14" />
-                            <path d="M5 12l14 0" />
-                        </svg>
-                    </a>
-                </td>
-                <td>
-                    <a href="feed.html">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-home">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
-                            <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-                            <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-                        </svg> 
-                    </a>
-                </td>
         
-            </tr>
-        </table>    
+            <section class="content-part">
+            
+                <article id="post">
+
+                    <!-- User -->
+                    <div class="post-header">
+                        <a href="profile.html">
+                            <img src="images/prof1.png" alt="User profile picture" class="profile-pic">
+                        </a>
+                        <div class="post-user-info">
+                            <a href="profile.html">
+                                <h3 class="username">Username</h3>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Post Content -->
+                    <div class="content">
+                        <p>sample post content.</p>
+                    </div>
+
+                </article>
+
+            </section>
+
+            <section class="comments-part">
+
+                <article id="post">
+
+                    
+                    <!-- Comments -->
+                    <div class="comments">
+                        <h5>Comments</h5>
+                    </div>
+
+
+                    <!-- Display Comments -->
+                    <div class="display-comments">
+
+                         <!-- Caption -->
+                        <div class="post-caption">
+                            <span class="caption-user"><strong>Username</strong></span>
+                            <span class="caption-text">Another caption can go here.</span>
+                        </div>
+
+                        <div class="other-comments"></div>
+
+                    </div>
+
+                    <!-- Submit Comment -->
+                    <div class="submit-comment">
+                        <form class="comment-here">
+                            <input type="text" id="comment" name="comment" placeholder="comment here ...">
+                            <button type="submit" style="border-radius: 3rem; width: 2rem; background:none; border:none;cursor:pointer;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="15" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-up-icon lucide-arrow-big-up">
+                                    <path d="M9 13a1 1 0 0 0-1-1H5.061a1 1 0 0 1-.75-1.811l6.836-6.835a1.207 1.207 0 0 1 1.707 0l6.835 6.835a1 1 0 0 1-.75 1.811H16a1 1 0 0 0-1 1v6a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1z"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+
+                </article>
+
+            </section>
+
+        
+
+    </main>
+
+    <footer class="bottom-nav">
+        <a href="menu.html" class="nav-item" aria-label="Menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="white" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="4" y1="6" x2="20" y2="6"></line>
+                <line x1="4" y1="12" x2="20" y2="12"></line>
+                <line x1="4" y1="18" x2="20" y2="18"></line>
+            </svg>
+        </a>
+
+        <a href="create-post.html" class="nav-item add" aria-label="Create post">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="white" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+        </a>
+
+        <a href="feed.html" class="nav-item" aria-label="Home">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="white" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12l9-9 9 9"></path>
+                <path d="M9 21V9h6v12"></path>
+            </svg>
+        </a>
     </footer>
     
 </body>
