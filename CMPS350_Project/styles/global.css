@@ -178,7 +178,7 @@ FEED ---------------------------------------------------------------------------
 
 .post {
   background: #ffffff;
-  border-radius: 1.25rem;
+  border-radius: 12px;
   padding: 1rem;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(0, 0, 0, 0.05);
@@ -252,7 +252,7 @@ FEED ---------------------------------------------------------------------------
   height: 50px;
 }
 
-/* Post Header */
+
 
 .post-header {
   display: flex;
@@ -336,4 +336,3 @@ main {
 .comment-btn:active svg {
   transform: scale(0.9);
 }
-
