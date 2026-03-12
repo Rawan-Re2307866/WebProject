@@ -60,6 +60,7 @@ body .login-body {
 .log-in-buttons {
   width: 100%;
   max-width: 400px;
+  border-radius: 20%;
 }
 
 .login-form {
@@ -151,16 +152,6 @@ body .login-body {
 }
 
 
-@media screen and (min-width: 600px) {
-  .login-body main h2 {
-    font-size: 2rem;
-  }
-
-  .login-form {
-    padding: 2.5rem;
-  }
-}
-
 /*
 Profile ----------------------------------------------------------------------------------------------------------------
 */
@@ -173,6 +164,8 @@ Profile ------------------------------------------------------------------------
 body {
   font-family: sans-serif;
   background: var(--color-bg-main);
+  margin: 0;
+  padding: 0;
 }
 
 .profile-header {
@@ -311,7 +304,7 @@ main {
   object-fit: cover;
 }
 
-@media(min-width: 768px) {
+@media screen and (min-width: 768px) {
   .profile-img-wrapper {
     top: 5rem;
     left: 5rem;
@@ -332,9 +325,63 @@ main {
   .stats-and-btn {
     align-items: flex-end;
   }
+  
+  body:has(.bottom-nav) {
+    display: grid;
+    grid-template-columns: 80px 1fr;  
+    grid-template-rows: 60px 1fr;     
+    min-height: 100vh;
+  }
+  
+  body:has(.bottom-nav) .top-bar,
+  body:has(.bottom-nav) .profile-header {
+    grid-column: 2;
+    grid-row: 1;
+    height: 60px;
+  }
+  
+  body:has(.bottom-nav) main {
+    grid-column: 2;
+    grid-row: 2;
+    padding-bottom: 0;
+    overflow-y: auto;  
+  }
+  
+  /* Bottom nav becomes left sidebar */
+  body:has(.bottom-nav) .bottom-nav {
+    grid-column: 1;
+    grid-row: 1 / -1;  
+    
+    width: 80px;
+    height: 100%;
+    background: var(--color-primary-dark);
+    
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2rem;
+    padding: 2rem 0;
+    
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.15);
+  }
+    body:has(.bottom-nav) footer {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    background: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .login-body main h2 {
+    font-size: 2rem;
+  }
+
+  .login-form {
+    padding: 2.5rem;
+  }
+
 }
 
-@media(min-width: 1080px) {
+@media screen and (min-width: 1080px) {
   .profile-header {
     justify-content: flex-start;
     padding-left: 0;
@@ -425,9 +472,6 @@ FEED ---------------------------------------------------------------------------
 }
 
 .bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
 
   width: 100%;
   height: 60px;
