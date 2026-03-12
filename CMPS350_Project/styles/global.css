@@ -324,12 +324,7 @@ main {
     align-items:flex-end;
   }
 }
-@media(min-width: 1080px){
-  .profile-header{
-    justify-content:flex-start;
-    padding-left:0;
-  }
-}
+
 /*
 FEED ----------------------------------------------------------------------------------------------------------------
 */
