@@ -89,6 +89,7 @@ Login Page ---------------------------------------------------------------------
   font-weight: 600;
   font-size: 0.9rem;
   margin-bottom: -0.5rem;
+  align-self: center;
 }
 
 .login-form input {
@@ -158,6 +159,14 @@ Login Page ---------------------------------------------------------------------
 
 .login-body footer a:hover {
   color: var(--color-btn-primary);
+}
+#usernameError, #passwordError{
+  color: #7e1c1c;
+  font-size: 0.8rem;
+  display: block;
+  margin-top: 0.1rem;
+  min-height: .7rem;
+  
 }
 
 .signup {
