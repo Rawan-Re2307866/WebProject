@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('.comment-here').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -16,3 +17,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+

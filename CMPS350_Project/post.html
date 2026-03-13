@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post</title>
     <link rel="stylesheet" href="styles/global.css">
-    <link rel="stylesheet" href="styles/profile.css">
+  <!--  <link rel="stylesheet" href="styles/profile.css"> -->
 
 </head>
 
-<script src="comment.js"></script>
+
 
 <body class="post-body">
     
@@ -73,7 +73,7 @@
                     <div class="submit-comment">
                         <form class="comment-here">
                             <input type="text" id="comment" name="comment" placeholder="comment here ...">
-                            <button type="submit" style="border-radius: 3rem; width: 2rem; background:none; border:none;cursor:pointer;">
+                            <button class="submit-comment-btn" type="submit">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="15" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-up-icon lucide-arrow-big-up">
                                     <path d="M9 13a1 1 0 0 0-1-1H5.061a1 1 0 0 1-.75-1.811l6.836-6.835a1.207 1.207 0 0 1 1.707 0l6.835 6.835a1 1 0 0 1-.75 1.811H16a1 1 0 0 0-1 1v6a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1z"/>
                                 </svg>
@@ -90,14 +90,16 @@
     </main>
 
     <footer class="bottom-nav">
-        <a href="feed.html" class="nav-item" aria-label="feed">
+        <!--<a href="feed.html" class="nav-item" aria-label="feed">-->
+        <button class="menu-btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="white" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <line x1="4" y1="6" x2="20" y2="6"></line>
                 <line x1="4" y1="12" x2="20" y2="12"></line>
                 <line x1="4" y1="18" x2="20" y2="18"></line>
             </svg>
-        </a>
+        </button>
+        <!--</a>-->
 
         <a href="create-post.html" class="nav-item add" aria-label="Create post">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="white" stroke-width="2"
@@ -107,7 +109,7 @@
             </svg>
         </a>
 
-        <a href="profile.html" class="nav-item" aria-label="profile">
+        <a href="feed.html" class="nav-item" aria-label="feed">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="white" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 12l9-9 9 9"></path>
@@ -115,6 +117,30 @@
             </svg>
         </a>
     </footer>
-    
+
+    <!-- Side Menu -->
+    <div class="menu-bar">
+
+        <button class="menu-close-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M18 6l-12 12" /><path d="M6 6l12 12" />
+            </svg>
+        </button>
+
+        <ul>
+            <li>
+                <a href="profile.html" id="profile-link" aria-label="profile">My Profile</a>
+            </li>
+
+            <li>
+                <button class="logout-btn">Logout</button>
+            </li>
+        </ul>
+
+    </div>
+    <script src="/scripts/comment.js"></script>
+    <script src="/scripts/menudisplay.js"></script>
 </body>
+
 </html>
