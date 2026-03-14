@@ -818,7 +818,7 @@ a {
 
 
 .menu-bar {
-  position: fixed;
+  position: absolute;
   top:6.5rem;
   right:3rem;               
   width: 0;             
@@ -913,7 +913,7 @@ a {
 
   .menu-btn, .menu-bar {
     top:7.9rem;
-    right:24rem;
+    right:28rem;
   }
 
 
