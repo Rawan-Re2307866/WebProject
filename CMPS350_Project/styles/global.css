@@ -739,6 +739,7 @@ a {
 
 }
 
+
 /* section 2*/
 .comments-part {
   grid-area: comments-part;
@@ -789,93 +790,89 @@ a {
   flex-grow: 1;
 }
 
-/* Side Menu 
+/* Post Menu */
 
-.menu-btn, .menu-close-btn {
+.menu-btn {
+  position: absolute;
+  top:6.5rem;
+  right:3rem;
+  width: 45px;
+  height: 45px;
   background: none;
   border: none;
   cursor: pointer;
-  width: 45px;
-  height: 45px;
   border-radius: 50%;
   transition: 0.3s ease;
 }
 
-.logout-btn {
+.menu-btn:hover {
+  background-color: #77777713;
+}
+
+.edit-post-btn, .delete-post-btn {
   background: none;
   border: none;
   cursor: pointer;
   transition: 0.3s ease;
 }
 
-.menu-btn:hover, .menu-close-btn:hover, .logout-btn:hover, .menu-bar a:hover {
-  background-color: var(--color-btn-primary);
-}
 
 .menu-bar {
   position: fixed;
-  bottom: 0;
-  left: 0;               
-  height: 100vh;
+  top:6.5rem;
+  right:3rem;               
   width: 0;             
   max-width: 16.25rem;
-  background-color: var(--color-primary-dark);
-  color: white;
+  border-radius: 9%;
+  background-color: #7a73a2;
   overflow: hidden;
   transition: width 0.3s ease;
   z-index: 2;
-  padding-top: 3.75rem;      
+  padding-top: 0.5rem;      
   font-size: 1rem;
-
 }
 
 .menu-bar.display {
-  width: 16.25rem;
+  width: 6rem;
 }
 
 .menu-bar ul {
   list-style: none;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
   margin: 0;
 }
 
 .menu-bar li {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
-.menu-bar a {
-  color: white;
-}
 
-.logout-btn {
-  font-size: 1rem;
-  color: white;
+.edit-post-btn, .delete-post-btn {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  color: #332e50;
 }
-
 
 .menu-close-btn {
-  position: absolute;
-  top: 10px;
-  left: 14px;
-  font-size: 1.8rem;
-  color: white;
-}
-
-.hide-content {
   position: fixed;
   inset: 0;
-  background: var(--color-primary-dark);
+  background: none;
+  border: none;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3 ease;
   pointer-events: none;
-  z-index: 1;
 }
 
-.hide-content.hide {
-  opacity: 0.5;
+.menu-close-btn.close {
+  opacity: 1;
   pointer-events: auto;
 }
-*/
+
+
+
+
+
+
 
 
 
@@ -896,7 +893,12 @@ a {
   .display-comments {
     max-height: 25rem;
   }
-  
+
+  .menu-btn, .menu-bar {
+    top:7.9rem;
+    right:18rem;
+  }
+
 
 
 }
@@ -908,6 +910,7 @@ a {
     justify-content: flex-start;
     padding: 0;
   }
+
 
 }
 

@@ -27,6 +27,7 @@
 
                     <!-- User -->
                     <div class="post-header">
+
                         <a href="profile.html">
                             <img src="images/prof1.png" alt="User profile picture" class="profile-pic">
                         </a>
@@ -35,7 +36,36 @@
                                 <h3 class="username">Username</h3>
                             </a>
                         </div>
+
                     </div>
+
+                    <!-- Post Menu -->
+                    <button class="menu-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-dots">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M7 12a2 2 0 1 1 -4 0q 0 -.053 .005 -.102a1.996 1.996 0 0 1 1.995 -1.898a2 2 0 0 1 2 2" />
+                            <path d="M14 12a2 2 0 1 1 -4 0q 0 -.053 .005 -.102a1.996 1.996 0 0 1 1.995 -1.898a2 2 0 0 1 2 2" />
+                            <path d="M21 12a2 2 0 1 1 -4 0q 0 -.053 .005 -.102a1.996 1.996 0 0 1 1.995 -1.898a2 2 0 0 1 2 2" />
+                        </svg>
+                    </button>
+                    
+                    <div class="menu-bar">
+            
+                        <ul>
+                            <li>
+                                <button class="delete-post-btn">Delete Post</button>
+                            </li>
+                
+                            <li>
+                                <button class="edit-post-btn">Edit Post</button>
+                            </li>
+                        </ul>
+                
+                    </div>
+
+                    
+                    <button class="menu-close-btn"></button>
+                    
 
                     <!-- Post Content -->
                     <div class="content">
@@ -92,13 +122,11 @@
 
     <footer class="bottom-nav">
         <a href="feed.html" class="nav-item" aria-label="feed">
-        <!-- <button class="menu-btn"> -->
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="white" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 12l9-9 9 9"></path>
                 <path d="M9 21V9h6v12"></path>
             </svg>
-        <!-- </button> -->
         </a>
 
         <a href="create-post.html" class="nav-item add" aria-label="Create post">
@@ -117,30 +145,6 @@
             </svg>
         </a>
     </footer>
-
-    <!-- Side Menu 
-    <div class="menu-bar">
-
-        <button class="menu-close-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <path d="M18 6l-12 12" /><path d="M6 6l12 12" />
-            </svg>
-        </button>
-
-        <ul>
-            <li>
-                <a href="profile.html" id="profile-link" aria-label="profile">My Profile</a>
-            </li>
-
-            <li>
-                <button class="logout-btn">Logout</button>
-            </li>
-        </ul>
-
-    </div>
-    
-    <div class="hide-content"></div> -->
 
     <script src="/scripts/comment.js"></script>
     <script src="/scripts/menudisplay.js"></script>
