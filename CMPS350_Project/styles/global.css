@@ -911,6 +911,11 @@ a {
     padding: 0;
   }
 
+  .menu-btn, .menu-bar {
+    top:7.9rem;
+    right:24rem;
+  }
+
 
 }
 
