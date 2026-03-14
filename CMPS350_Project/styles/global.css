@@ -823,7 +823,7 @@ a {
   color: white;
   overflow: hidden;
   transition: width 0.3s ease;
-  z-index: 1;
+  z-index: 2;
   padding-top: 3.75rem;      
   font-size: 1rem;
 
@@ -861,6 +861,21 @@ a {
   color: white;
 }
 
+.hide-content {
+  position: fixed;
+  inset: 0;
+  background: var(--color-primary-dark);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hide-content.hide {
+  opacity: 0.5;
+  pointer-events: auto;
+}
+
 
 
 
@@ -880,6 +895,8 @@ a {
   .display-comments {
     max-height: 25rem;
   }
+  
+
 
 }
 
@@ -892,4 +909,5 @@ a {
   }
 
 }
+
 
