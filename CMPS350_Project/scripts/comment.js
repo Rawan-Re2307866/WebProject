@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (text) {
       const container = document.querySelector('.other-comments');
       const commentDiv = document.createElement('div');
-      commentDiv.style.cssText = 'margin: 10px 0; padding: 8px; background: #f0f0f0; font-size: x-small';
+      commentDiv.style.cssText = 'margin: 10px 0; padding: 8px; background: none; font-size: x-small';
       commentDiv.textContent = text;
       
       container.appendChild(commentDiv);
