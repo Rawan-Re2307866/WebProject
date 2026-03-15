@@ -1,12 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("feed.js is connected");
 
     const likeButtons = document.querySelectorAll(".like-btn");
-    console.log("found like buttons:", likeButtons.length);
 
     likeButtons.forEach(button => {
+        const likeCount = button.nextElementSibling;
         button.addEventListener("click", () => {
             button.classList.toggle("liked");
+            let count = parseInt(likeCount.textContent);
+            if (button.classList.contains("liked")) {
+                likeCount.textContent = count + 1;
+            } else {
+                likeCount.textContent = count - 1;
+            }
         });
     });
 });
