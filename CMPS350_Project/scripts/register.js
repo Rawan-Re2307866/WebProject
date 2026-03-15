@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 profilePicture: 'images/prof1.png',
                 followers: [],
                 following:[],
+                posts:[],
                 createAt: new Date().toISOString()
             };
             users.push(newUser);
