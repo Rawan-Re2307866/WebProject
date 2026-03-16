@@ -1104,7 +1104,7 @@ a {
   opacity: 0;
   background-color: white;
   overflow: hidden;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.1s ease;
   z-index: 2;
   padding-top: 0.5rem;
   font-size: 1rem;
