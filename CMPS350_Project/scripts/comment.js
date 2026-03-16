@@ -1,4 +1,6 @@
 
+/* Display Comments */
+
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('.comment-here').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -17,5 +19,41 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+/* Create Post Page */
+
+const createPostPageBtn = document.querySelector(".create-post-page-btn");
+const createPostPage = document.querySelector(".create-post-page");
+const closeCreatePageBtn = document.querySelector(".close-create-post-btn");
+
+createPostPageBtn.addEventListener("click", () => createPostPage.classList.add("show"));
+closeCreatePageBtn.addEventListener("click", () => createPostPage.classList.remove("show"));
+
+
+
+
+const posts = 
+[
+  {
+    id: 100,
+    userId: 1,
+    caption: "" ,
+    content: "text/image src/video src",
+    createdAt:"",
+    likes: [], /* users id's */
+    comments: [], /* comments id's */
+  }
+]
+
+const comments =
+[
+  {
+    id: 1000,
+    userId: 1,
+    postId:100,
+    content: "",
+    createdAt:"",
+  }
+]
 
 

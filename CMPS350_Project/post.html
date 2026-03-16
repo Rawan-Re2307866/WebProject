@@ -142,6 +142,96 @@
 
             </section>
 
+            <!-- Create Post -->
+            <div class="create-post-page">
+
+                <div class="create-post-top-bar">
+
+                    <button class="close-create-post-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-x">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M6.707 5.293l5.293 5.292l5.293 -5.292a1 1 0 0 1 1.414 1.414l-5.292 5.293l5.292 5.293a1 1 0 0 1 -1.414 1.414l-5.293 -5.292l-5.293 5.292a1 1 0 1 1 -1.414 -1.414l5.292 -5.293l-5.292 -5.293a1 1 0 0 1 1.414 -1.414" />
+                        </svg>
+                    </button>
+
+                    <h3 class="create-post-header">Create Post</h3>
+
+                    <button class="post-content-btn"> post </button>
+
+                </div>
+
+                
+                    
+                    <div class="create-post-user">
+                        
+                        <a href="profile.html">
+                            <img src="images/prof1.png" alt="User profile picture" class="user-pic">
+                        </a>
+                        <div class="create-post-user-info">
+                            <a href="profile.html">
+                                <h3 class="create-post-username">username</h3>
+                            </a>
+                        </div>
+
+                    </div>
+                
+                    <div class="create-post-content">
+
+                    <div class="create-caption-text">
+
+                        <textarea name="caption-text" id="caption-text" cols="30" rows="5" placeholder="Type your post caption here..."></textarea>
+
+                    </div>
+
+                    <div class="image-video-content">
+                        
+                    </div>
+
+                </div>
+
+            
+
+            <div class="post-type-selection-bar">
+                
+                <button class="text-post-type">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-text-recognition">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M4 8v-2a2 2 0 0 1 2 -2h2" />
+                        <path d="M4 16v2a2 2 0 0 0 2 2h2" />
+                        <path d="M16 4h2a2 2 0 0 1 2 2v2" />
+                        <path d="M16 20h2a2 2 0 0 0 2 -2v-2" />
+                        <path d="M12 16v-7" />
+                        <path d="M9 9h6" />
+                    </svg>
+                </button>
+
+                <button class="image-post-type">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-image-in-picture">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M13 15c-2 0 -5 1 -5 5" />
+                        <path d="M4 13a2 2 0 0 1 2 -2h5a2 2 0 0 1 2 2v5a2 2 0 0 1 -2 2h-5a2 2 0 0 1 -2 -2l0 -5" />
+                        <path d="M4 7v-2a1 1 0 0 1 1 -1h2" />
+                        <path d="M11 4h2" />
+                        <path d="M17 4h2a1 1 0 0 1 1 1v2" />
+                        <path d="M20 11v2" />
+                        <path d="M20 17v2a1 1 0 0 1 -1 1h-2" />
+                    </svg>
+                </button>
+
+                <button class="video-post-type">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-video">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M15 10l4.553 -2.276a1 1 0 0 1 1.447 .894v6.764a1 1 0 0 1 -1.447 .894l-4.553 -2.276v-4" />
+                        <path d="M3 8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -8" />
+                    </svg>
+                </button>
+
+            </div>
+            
+            
+        </div>
+            
+
         
 
     </main>
@@ -155,13 +245,15 @@
             </svg>
         </a>
 
-        <a href="create-post.html" class="nav-item add" aria-label="Create post">
+        
+        <button class="create-post-page-btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="white" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <line x1="12" y1="5" x2="12" y2="19"></line>
                 <line x1="5" y1="12" x2="19" y2="12"></line>
             </svg>
-        </a>
+        </button>
+       
 
         <a href="profile.html" class="nav-item" aria-label="profile">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user">
