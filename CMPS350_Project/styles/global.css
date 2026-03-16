@@ -1094,7 +1094,7 @@ a {
 }
 
 .create-post-page-btn:hover {
-  background-color: var(--color-btn-primary-hover-light);
+  background-color: var(--);
 }
 
 .create-post-page {
@@ -1102,7 +1102,7 @@ a {
   inset: 0;
   bottom: -16.5rem;
   opacity: 0;
-  background-color: #7a73a2;
+  background-color: white;
   overflow: hidden;
   transition: opacity 0.3s ease;
   z-index: 2;
@@ -1124,7 +1124,7 @@ a {
 }
 
 .close-create-post-btn, .post-content-btn  {
-  color: white;
+  color: var(--color-primary-dark);
   border: none;
   background: none;
   cursor: pointer;
@@ -1135,11 +1135,11 @@ a {
 }
 
 .close-create-post-btn:hover, .post-content-btn:hover  {
-  background-color: var(--color-btn-primary-hover);
+  background-color: rgba(220, 220, 220, 0.265);
 }
 
 .create-post-header {
-  color: white;
+  color: var(--color-primary-dark);
   font-style: italic;
   padding-top: 0.5rem;
   font-weight: 100;
@@ -1188,13 +1188,13 @@ a {
   width: 81.25px;
   background: none;
   border: none;
-  color: white;
+  color: var(--color-primary-dark);
   cursor: pointer;
   transition: 0.3s ease;
 }
 
 .post-type-selection-bar button:hover {
-  background-color: var(--color-btn-primary-hover);
+  background-color: rgba(220, 220, 220, 0.265);
 }
 
 
