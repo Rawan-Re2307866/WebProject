@@ -1155,6 +1155,12 @@ a {
   transition: 0.3 ease;
 }
 
+.post-content-btn {
+  font-size: large;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
 .close-create-post-btn:hover, .post-content-btn:hover  {
   background-color: rgba(220, 220, 220, 0.265);
 }
