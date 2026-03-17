@@ -130,13 +130,13 @@ postContentBtn.addEventListener("click", () =>
 
   if (currentType == "text") {
     const text = textContent.value.trim()
-    if (!text && !captionText) {
-      alert("Write some text or add a caption before posting.")
+    if (!text) {
+      alert("Write some text")
       return;
     }
 
     const p = document.createElement("p")
-    p.textContent = text || captionText
+    p.textContent = text 
     postContent.appendChild(p)
   }
 
