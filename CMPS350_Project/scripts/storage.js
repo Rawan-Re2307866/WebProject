@@ -1,13 +1,23 @@
 /* users, posts, and comments */
 
-
 /* users */
 function getUsers() {
     return JSON.parse(localStorage.getItem("users")) || [];
 }
 
 function addUser(user) {
-    localStorage.setItem("users",JSON.stringify(user));
+    const users = getUsers();
+    users.push(user);
+    localStorage.setItem("users", JSON.stringify(users));
+}
+
+function updateUser(updatedUser) {
+    const users = getUsers();
+    const index = users.findIndex(u => u.id === updatedUser.id);
+    if (index !== -1) {
+        users[index] = updatedUser;
+        localStorage.setItem("users", JSON.stringify(users));
+    }
 }
 
 /* posts */
@@ -16,7 +26,18 @@ function getPosts() {
 }
 
 function addPost(post) {
-    localStorage.setItem("posts", JSON.stringify(post));
+    const posts = getPosts();
+    posts.push(post);
+    localStorage.setItem("posts", JSON.stringify(posts));
+}
+
+function updatePost(updatedPost) {
+    const posts = getPosts();
+    const index = posts.findIndex(p => p.id === updatedPost.id);
+    if (index !== -1) {
+        posts[index] = updatedPost;
+        localStorage.setItem("posts", JSON.stringify(posts));
+    }
 }
 
 /* comments */
@@ -25,6 +46,17 @@ function getComments() {
 }
 
 function addComment(comment) {
-    localStorage.setItem("comments", JSON.stringify(comment));
+    const comments = getComments();
+    comments.push(comment);
+    localStorage.setItem("comments", JSON.stringify(comments));
+}
+
+function updateComment(updatedComment) {
+    const comments = getComments();
+    const index = comments.findIndex(c => c.id === updatedComment.id);
+    if (index !== -1) {
+        comments[index] = updatedComment;
+        localStorage.setItem("comments", JSON.stringify(comments));
+    }
 }
 

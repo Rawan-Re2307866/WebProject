@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post</title>
     <link rel="stylesheet" href="styles/global.css">
-  <!--  <link rel="stylesheet" href="styles/profile.css"> -->
+    <!--  <link rel="stylesheet" href="styles/profile.css"> -->
 
 </head>
 
 
 
 <body class="post-body">
-    
+
     <header class="top-bar">
         <img src="images\logo.png" alt="a r squared" class="logo">
     </header>
@@ -20,128 +21,245 @@
 
     <main class="post-page">
 
-        
-            <section class="content-part">
-            
-                <article id="post">
 
-                    <!-- User -->
-                    <div class="post-header">
-                        
+        <section class="content-part">
+
+            <article id="post">
+
+                <!-- User -->
+                <div class="post-header">
+
+                    <a href="profile.html">
+                        <img src="images/prof1.png" alt="User profile picture" class="profile-pic">
+                    </a>
+                    <div class="post-user-info">
                         <a href="profile.html">
-                            <img src="images/prof1.png" alt="User profile picture" class="profile-pic">
+                            <h3 class="username">Username</h3>
                         </a>
-                        <div class="post-user-info">
-                            <a href="profile.html">
-                                <h3 class="username">Username</h3>
-                            </a>
-                        </div>
+                    </div>
 
                     <!-- Post Menu -->
                     <button class="menu-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-dots">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M7 12a2 2 0 1 1 -4 0q 0 -.053 .005 -.102a1.996 1.996 0 0 1 1.995 -1.898a2 2 0 0 1 2 2" />
-                            <path d="M14 12a2 2 0 1 1 -4 0q 0 -.053 .005 -.102a1.996 1.996 0 0 1 1.995 -1.898a2 2 0 0 1 2 2" />
-                            <path d="M21 12a2 2 0 1 1 -4 0q 0 -.053 .005 -.102a1.996 1.996 0 0 1 1.995 -1.898a2 2 0 0 1 2 2" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-dots">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M7 12a2 2 0 1 1 -4 0q 0 -.053 .005 -.102a1.996 1.996 0 0 1 1.995 -1.898a2 2 0 0 1 2 2" />
+                            <path
+                                d="M14 12a2 2 0 1 1 -4 0q 0 -.053 .005 -.102a1.996 1.996 0 0 1 1.995 -1.898a2 2 0 0 1 2 2" />
+                            <path
+                                d="M21 12a2 2 0 1 1 -4 0q 0 -.053 .005 -.102a1.996 1.996 0 0 1 1.995 -1.898a2 2 0 0 1 2 2" />
                         </svg>
                     </button>
 
+                </div>
+
+
+
+                <div class="menu-bar">
+
+                    <ul>
+                        <li>
+                            <button class="delete-post-btn">Delete Post</button>
+                        </li>
+
+                        <li>
+                            <button class="edit-post-btn">Edit Post</button>
+                        </li>
+                    </ul>
+
+                </div>
+
+
+                <button class="menu-close-btn"></button>
+
+
+                <!-- Post Content -->
+                <div class="content">
+                    <p>sample post content.</p>
+                </div>
+
+                <!-- Like and Comment Icons -->
+
+                <div class="post-actions">
+                    <button class="like-btn" aria-label="Like post">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-heart">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                        </svg>
+                    </button>
+                    <span class="like-count">0</span>
+
+                    <a href="post.html" class="comment-btn" aria-label="Open comments">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="#83778d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="icon icon-tabler icon-tabler-bubble">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M12.4 3a5.34 5.34 0 0 1 4.906 3.239a5.333 5.333 0 0 1 -1.195 10.6a4.26 4.26 0 0 1 -5.28 1.863l-3.831 2.298v-3.134a2.668 2.668 0 0 1 -1.795 -3.773a4.8 4.8 0 0 1 2.908 -8.933a5.33 5.33 0 0 1 4.287 -2.16" />
+                        </svg>
+                    </a>
+                </div>
+
+            </article>
+
+        </section>
+
+        <section class="comments-part">
+
+            <article id="post">
+
+
+                <!-- Comments -->
+                <div class="comments">
+                    <h5>Comments</h5>
+                </div>
+
+
+                <!-- Display Comments -->
+                <div class="display-comments">
+
+                    <!-- Caption -->
+                    <div class="post-caption">
+                        <span class="caption-user"><strong>Username</strong></span>
+                        <span class="caption-text">Another caption can go here.</span>
                     </div>
 
-                   
-                    
-                    <div class="menu-bar">
-            
-                        <ul>
-                            <li>
-                                <button class="delete-post-btn">Delete Post</button>
-                            </li>
-                
-                            <li>
-                                <button class="edit-post-btn">Edit Post</button>
-                            </li>
-                        </ul>
-                
-                    </div>
+                    <div class="other-comments"></div>
 
-                    
-                    <button class="menu-close-btn"></button>
-                    
+                </div>
 
-                    <!-- Post Content -->
-                    <div class="content">
-                        <p>sample post content.</p>
-                    </div>
-
-                    <!-- Like and Comment Icons -->
-
-                    <div class="post-actions">
-                        <button class="like-btn" aria-label="Like post">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-heart">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                <!-- Submit Comment -->
+                <div class="submit-comment">
+                    <form class="comment-here">
+                        <input type="text" id="comment" name="comment" placeholder="comment here ...">
+                        <button class="submit-comment-btn" type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="15" viewBox="0 0 24 24"
+                                fill="none" stroke="black" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-arrow-big-up-icon lucide-arrow-big-up">
+                                <path
+                                    d="M9 13a1 1 0 0 0-1-1H5.061a1 1 0 0 1-.75-1.811l6.836-6.835a1.207 1.207 0 0 1 1.707 0l6.835 6.835a1 1 0 0 1-.75 1.811H16a1 1 0 0 0-1 1v6a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1z" />
                             </svg>
                         </button>
-                        <span class="like-count">0</span>
-        
-                        <a href="post.html" class="comment-btn" aria-label="Open comments">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="#83778d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icon-tabler-bubble">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path
-                                d="M12.4 3a5.34 5.34 0 0 1 4.906 3.239a5.333 5.333 0 0 1 -1.195 10.6a4.26 4.26 0 0 1 -5.28 1.863l-3.831 2.298v-3.134a2.668 2.668 0 0 1 -1.795 -3.773a4.8 4.8 0 0 1 2.908 -8.933a5.33 5.33 0 0 1 4.287 -2.16" />
-                            </svg>
-                        </a>
-                    </div>
+                    </form>
+                </div>
 
-                </article>
+            </article>
 
-            </section>
+        </section>
 
-            <section class="comments-part">
+        <!-- Create Post -->
+        <div class="create-post-page">
 
-                <article id="post">
+            <div class="create-post-top-bar">
 
-                    
-                    <!-- Comments -->
-                    <div class="comments">
-                        <h5>Comments</h5>
-                    </div>
+                <button class="close-create-post-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-x">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M6.707 5.293l5.293 5.292l5.293 -5.292a1 1 0 0 1 1.414 1.414l-5.292 5.293l5.292 5.293a1 1 0 0 1 -1.414 1.414l-5.293 -5.292l-5.293 5.292a1 1 0 1 1 -1.414 -1.414l5.292 -5.293l-5.292 -5.293a1 1 0 0 1 1.414 -1.414" />
+                    </svg>
+                </button>
+
+                <h3 class="create-post-header">Create Post</h3>
+
+                <button class="post-content-btn"> post </button>
+
+            </div>
 
 
-                    <!-- Display Comments -->
-                    <div class="display-comments">
 
-                         <!-- Caption -->
-                        <div class="post-caption">
-                            <span class="caption-user"><strong>Username</strong></span>
-                            <span class="caption-text">Another caption can go here.</span>
-                        </div>
+            <div class="create-post-user">
 
-                        <div class="other-comments"></div>
+                <a href="profile.html">
+                    <img src="images/prof1.png" alt="User profile picture" class="user-pic">
+                </a>
+                <div class="create-post-user-info">
+                    <a href="profile.html">
+                        <h3 class="create-post-username">username</h3>
+                    </a>
+                </div>
 
-                    </div>
+            </div>
 
-                    <!-- Submit Comment -->
-                    <div class="submit-comment">
-                        <form class="comment-here">
-                            <input type="text" id="comment" name="comment" placeholder="comment here ...">
-                            <button class="submit-comment-btn" type="submit">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="15" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-up-icon lucide-arrow-big-up">
-                                    <path d="M9 13a1 1 0 0 0-1-1H5.061a1 1 0 0 1-.75-1.811l6.836-6.835a1.207 1.207 0 0 1 1.707 0l6.835 6.835a1 1 0 0 1-.75 1.811H16a1 1 0 0 0-1 1v6a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1z"/>
-                                </svg>
-                            </button>
-                        </form>
-                    </div>
+            <div class="create-post-content">
 
-                </article>
+                <div class="create-caption-text">
 
+<<<<<<< Updated upstream
             </section>
             
+=======
+                    <textarea name="caption-text" id="caption-text" cols="30" rows="5"
+                        placeholder="Type your post caption here..."></textarea>
+
+                </div>
+
+                <div class="text-image-video-content">
+
+                    <input type="file" id="media-content" accept="image/*,video/*">
+                    <input type="text" id="text-content">
+
+                </div>
+
+            </div>
+
+
+
+            <div class="post-type-selection-bar">
+
+                <button class="text-post-type">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-text-recognition">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M4 8v-2a2 2 0 0 1 2 -2h2" />
+                        <path d="M4 16v2a2 2 0 0 0 2 2h2" />
+                        <path d="M16 4h2a2 2 0 0 1 2 2v2" />
+                        <path d="M16 20h2a2 2 0 0 0 2 -2v-2" />
+                        <path d="M12 16v-7" />
+                        <path d="M9 9h6" />
+                    </svg>
+                </button>
+
+                <button class="image-post-type">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-image-in-picture">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M13 15c-2 0 -5 1 -5 5" />
+                        <path d="M4 13a2 2 0 0 1 2 -2h5a2 2 0 0 1 2 2v5a2 2 0 0 1 -2 2h-5a2 2 0 0 1 -2 -2l0 -5" />
+                        <path d="M4 7v-2a1 1 0 0 1 1 -1h2" />
+                        <path d="M11 4h2" />
+                        <path d="M17 4h2a1 1 0 0 1 1 1v2" />
+                        <path d="M20 11v2" />
+                        <path d="M20 17v2a1 1 0 0 1 -1 1h-2" />
+                    </svg>
+                </button>
+
+                <button class="video-post-type">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-video">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M15 10l4.553 -2.276a1 1 0 0 1 1.447 .894v6.764a1 1 0 0 1 -1.447 .894l-4.553 -2.276v-4" />
+                        <path d="M3 8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -8" />
+                    </svg>
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+
+
+>>>>>>> Stashed changes
     </main>
 
     <footer class="bottom-nav">
@@ -153,28 +271,41 @@
             </svg>
         </a>
 
+<<<<<<< Updated upstream
         
         <a href="create-post.html" class="nav-item add" aria-label="Create post">
+=======
+
+        <button class="create-post-page-btn">
+>>>>>>> Stashed changes
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="white" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <line x1="12" y1="5" x2="12" y2="19"></line>
                 <line x1="5" y1="12" x2="19" y2="12"></line>
             </svg>
+<<<<<<< Updated upstream
         </a>
        
+=======
+        </button>
+
+>>>>>>> Stashed changes
 
         <a href="profile.html" class="nav-item" aria-label="profile">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-user">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
                 <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
             </svg>
         </a>
     </footer>
 
-    <script src="/scripts/comment.js"></script>
-    <script src="/scripts/menudisplay.js"></script>
-    <script src="/scripts/feed.js"></script>
+    <script src="scripts/storage.js"></script>
+    <script src="scripts/comment.js"></script>
+    <script src="scripts/menudisplay.js"></script>
+    <script src="scripts/feed.js"></script>
 </body>
 
 </html>
