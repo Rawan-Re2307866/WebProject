@@ -62,7 +62,7 @@ function displayProfile(profileUser, currentUser){
 function toggleFollow(userId, currentUser) {
     const users = JSON.parse(localStorage.getItem('users')) || [];
     
-    // Find current user in users array
+    
     const currentUserIndex = users.findIndex(u => u.id === currentUser.id);
     const targetUserIndex = users.findIndex(u => u.id === userId);
     
@@ -71,28 +71,28 @@ function toggleFollow(userId, currentUser) {
     const isFollowing = users[currentUserIndex].following.includes(userId);
     
     if (isFollowing) {
-        // Unfollow
+        
         users[currentUserIndex].following = users[currentUserIndex].following.filter(id => id !== userId);
         users[targetUserIndex].followers = users[targetUserIndex].followers.filter(id => id !== currentUser.id);
     } else {
-        // Follow
+    
         users[currentUserIndex].following.push(userId);
         users[targetUserIndex].followers.push(currentUser.id);
     }
     
-    // Update localStorage
+    
     localStorage.setItem('users', JSON.stringify(users));
     
-    // Update currentUser in localStorage
+    
     localStorage.setItem('currentUser', JSON.stringify(users[currentUserIndex]));
     
-    // Reload page to show updated data
+    
     location.reload();
 }
 
 function displayUserPosts(posts) {
     const postsContainer = document.querySelector('.posts');
-    postsContainer.innerHTML = ''; // Clear placeholder posts
+    postsContainer.innerHTML = ''; 
     
     if (posts.length === 0) {
         postsContainer.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #999;">No posts yet</p>';
@@ -103,18 +103,18 @@ function displayUserPosts(posts) {
         const postDiv = document.createElement('div');
         postDiv.className = 'post-profile';
         
-        // If post has an image, show it
+    
         if (post.image) {
             const img = document.createElement('img');
             img.src = post.image;
             img.alt = 'Post';
             postDiv.appendChild(img);
         } else {
-            // Show post content as preview
+            
             postDiv.innerHTML = `<p style="padding: 1rem; font-size: 0.9rem; overflow: hidden;">${post.content.substring(0, 50)}...</p>`;
         }
         
-        // Make clickable to view full post
+    
         postDiv.onclick = function() {
             window.location.href = `post.html?postId=${post.id}`;
         };
