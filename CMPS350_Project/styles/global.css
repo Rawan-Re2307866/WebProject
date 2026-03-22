@@ -1118,8 +1118,6 @@ a {
   pointer-events: auto;
 }
 
-<<<<<<< Updated upstream
-=======
 /* Create Post*/
 
 .create-post-page-btn {
@@ -1270,16 +1268,6 @@ a {
   background-color: rgba(220, 220, 220, 0.265);
 }
 
->>>>>>> Stashed changes
-
-
-
-
-
-
-
-
-
 /* Tablet */
 @media (min-width: 768px) {
 
@@ -1303,27 +1291,28 @@ a {
     right: 18rem;
   }
 
-  .create-post-body { 
+  .create-post-body {
     display: grid;
-    grid-template-columns: 1fr  auto;
+    grid-template-columns: 1fr auto;
     grid-template-rows: 0.25rem auto;
-    grid-template-areas: 
-    "bottom-nav top-bar"
-    "bottom-nav create-post-page";
+    grid-template-areas:
+      "bottom-nav top-bar"
+      "bottom-nav create-post-page";
     height: 0;
   }
 
 
   .create-post-page {
     position: absolute;
-    left:100px;
-    right:1px;
+    left: 100px;
+    right: 1px;
     top: 100px;
   }
+
   .create-post-bottom-bar {
     position: absolute;
     right: 1px;
-    bottom:1px;
+    bottom: 1px;
     padding: 0.5rem;
   }
 
@@ -1353,45 +1342,45 @@ Create Post --------------------------------------------------------------------
   grid-area: top-bar;
 }
 
-.create-post-body .create-post-page { 
+.create-post-body .create-post-page {
   grid-area: create-post-page;
 }
 
-.create-post-body .bottom-nav { 
+.create-post-body .bottom-nav {
   grid-area: bottom-nav;
   position: fixed;
   bottom: 0;
 }
 
-.create-post-body { 
+.create-post-body {
   display: grid;
   grid-template-rows: 1fr auto 1fr;
-  grid-template-areas: 
-  "top-bar"
-  "create-post-page"
-  "bottom-nav";
+  grid-template-areas:
+    "top-bar"
+    "create-post-page"
+    "bottom-nav";
   min-height: 100vh;
 }
 
 /* Create Post*/
-.create-post-page section { 
+.create-post-page section {
   grid-area: create-post-section;
 }
 
-.create-post-page { 
+.create-post-page {
   display: grid;
   grid-template-rows: 0.25fr auto 0.25fr;
-  grid-template-areas: 
-  "create-post-top-bar"
-  "create-post-section"
-  "create-post-bottom-bar";
+  grid-template-areas:
+    "create-post-top-bar"
+    "create-post-section"
+    "create-post-bottom-bar";
   border-radius: 1rem;
   margin: 1rem;
   background-color: white;
   font-size: 1rem;
 }
 
-.create-post-top-bar { 
+.create-post-top-bar {
   grid-area: create-post-top-bar;
   border-bottom: 0.5px solid var(--color-btn-primary-hover-light);
 }
@@ -1402,12 +1391,12 @@ Create Post --------------------------------------------------------------------
   justify-content: end;
   border-radius: 1rem;
   margin: 2rem;
-  margin-bottom:0;
+  margin-bottom: 0;
   max-width: 60rem;
 
 }
 
-.post-content-btn  { 
+.post-content-btn {
   color: var(--color-primary-dark);
   border: none;
   background: none;
@@ -1421,12 +1410,12 @@ Create Post --------------------------------------------------------------------
   transition: 0.3 ease;
 }
 
-.post-content-btn:hover  {
+.post-content-btn:hover {
   background-color: rgba(220, 220, 220, 0.265);
 }
 
-.create-post-header { 
-  display:flex;
+.create-post-header {
+  display: flex;
   justify-content: center;
   color: var(--color-primary-dark);
   font-style: italic;
@@ -1435,23 +1424,24 @@ Create Post --------------------------------------------------------------------
 }
 
 
-.create-post-user { 
+.create-post-user {
   display: flex;
   margin: 1rem;
 }
 
-.user-pic { 
+.user-pic {
   width: 35px;
   border-radius: 50%;
 }
 
-.create-post-username { 
+.create-post-username {
   font-size: small;
   padding-top: 0.5rem;
   padding-left: 0.5rem;
 }
 
-.create-post-page section article, .text-image-video-content {
+.create-post-page section article,
+.text-image-video-content {
   margin: 2rem;
   border-radius: 1rem;
   max-width: 60rem;
@@ -1470,7 +1460,9 @@ Create Post --------------------------------------------------------------------
 
 /* Content Type Actions */
 
-.text-image-video-content img, .text-image-video-content video, .text-image-video-content p {
+.text-image-video-content img,
+.text-image-video-content video,
+.text-image-video-content p {
   max-width: 100%;
   max-height: 300px;
 }
@@ -1486,12 +1478,13 @@ Create Post --------------------------------------------------------------------
 }
 
 .text-image-video-content input[type="text"] {
-  display:flex;
-  flex:1;
-  width:90%;
+  display: flex;
+  flex: 1;
+  width: 90%;
 }
 
-.text-image-video-content.media input[type="file"], .text-image-video-content.text input[type="text"] {
+.text-image-video-content.media input[type="file"],
+.text-image-video-content.text input[type="text"] {
   opacity: 1;
   pointer-events: auto;
 }
@@ -1502,6 +1495,7 @@ Create Post --------------------------------------------------------------------
   display: flex;
   flex-direction: column;
 }
+
 .post-type-selection-bar button {
   width: 50px;
   background: none;
@@ -1514,4 +1508,3 @@ Create Post --------------------------------------------------------------------
 .post-type-selection-bar button:hover {
   background-color: rgba(220, 220, 220, 0.265);
 }
-
