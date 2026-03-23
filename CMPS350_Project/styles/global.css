@@ -953,14 +953,15 @@ a {
   height: auto;
 }
 
-.content img,
-.content video {
+.content img {
   width: 50%;
   height: 50%;
   object-fit: contain;
   border-radius: 1rem;
   display: block;
 }
+
+
 
 /* section 2*/
 .comments-part {
@@ -1255,7 +1256,7 @@ Create Post --------------------------------------------------------------------
 }
 
 .create-post-page section article,
-.text-image-video-content {
+.text-image-content {
   margin: 2rem;
   border-radius: 1rem;
   max-width: 60rem;
@@ -1274,14 +1275,13 @@ Create Post --------------------------------------------------------------------
 
 /* Content Type Actions */
 
-.text-image-video-content img,
-.text-image-video-content video,
-.text-image-video-content p {
+.text-image-content img,
+.text-image-content p {
   max-width: 100%;
   max-height: 300px;
 }
 
-.text-image-video-content input {
+.text-image-content input {
   display: flex;
   margin: 1rem;
   opacity: 0;
@@ -1289,14 +1289,14 @@ Create Post --------------------------------------------------------------------
   pointer-events: none;
 }
 
-.text-image-video-content input[type="text"] {
+.text-image-content input[type="text"] {
   display: flex;
   flex: 1;
   width: 90%;
 }
 
-.text-image-video-content.media input[type="file"],
-.text-image-video-content.text input[type="text"] {
+.text-image-content.media input[type="file"],
+.text-image-content.text input[type="text"] {
   opacity: 1;
   pointer-events: auto;
 }

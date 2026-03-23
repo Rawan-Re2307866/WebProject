@@ -27,13 +27,8 @@ document.addEventListener("DOMContentLoaded", () =>
             img.src = post.content;
             img.alt = "Post";
             link.appendChild(img);
-          } else if (post.type === "video") {
-            const video = document.createElement("video");
-            video.src = post.content;
-            video.muted = true;
-            video.playsInline = true;
-            link.appendChild(video);
-          } else if (post.type === "text") {
+          }
+        else if (post.type === "text") {
             const textDiv = document.createElement("div");
             textDiv.textContent = post.content;
             textDiv.style.display = "flex";

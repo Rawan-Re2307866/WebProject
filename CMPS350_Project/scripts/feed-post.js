@@ -55,10 +55,6 @@ document.addEventListener("DOMContentLoaded" , () =>
             postContent.innerHTML = `<img src="${post.content}" alt="Post image">`
         }
 
-        else if (post.type === "video") {
-            postContent.innerHTML = `<video src="${post.content}" controls></video>`
-        }
-
         else if (post.type === "text") {
             postContent.innerHTML = `<p>${post.content}</p>`
         }

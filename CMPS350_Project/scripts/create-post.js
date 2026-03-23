@@ -7,8 +7,7 @@ const postContentBtn = document.querySelector(".post-content-btn")
 /* create-post.html */
 const textPostTypeBtn = document.querySelector(".text-post-type")
 const imagePostTypeBtn = document.querySelector(".image-post-type")
-const videoPostTypeBtn = document.querySelector(".video-post-type")
-const postType = document.querySelector(".text-image-video-content")
+const postType = document.querySelector(".text-image-content")
 const mediaContent = document.querySelector("#media-content")
 const textContent = document.querySelector("#text-content")
 const postCaptionText = document.querySelector("#caption-text")
@@ -22,7 +21,7 @@ function clearPreviousSelection() {
 
   textContent.value = ""
 
-  const oldPreview = postType.querySelector("img, video, p.preview-text");
+  const oldPreview = postType.querySelector("img, p.preview-text");
   if (oldPreview) oldPreview.remove();
 }
 
@@ -50,19 +49,6 @@ imagePostTypeBtn.addEventListener("click", () =>
   mediaContent.click()
 })
 
-videoPostTypeBtn.addEventListener("click", () => 
-{
-  clearPreviousSelection()
-
-  currentType = "video"
-
-  postType.classList.add("media")
-  postType.classList.remove("text")
-
-  mediaContent.accept = "video/*"
-  mediaContent.click()
-})
-
 
 mediaContent.addEventListener("change", () => 
 {
@@ -70,7 +56,7 @@ mediaContent.addEventListener("change", () =>
   
   if (!file) return;
 
-  const oldPreview = postType.querySelector("img, video, p.preview-text")
+  const oldPreview = postType.querySelector("img, p.preview-text")
   if (oldPreview) oldPreview.remove();
 
   const url = URL.createObjectURL(file)
@@ -80,13 +66,6 @@ mediaContent.addEventListener("change", () =>
     img.src = url
     img.alt = "image preview"
     postType.appendChild(img)
-  }
-  else if (currentType == "video") {
-    const video = document.createElement("video");
-    video.src = url
-    video.controls = true
-    postType.appendChild(video)
-
   }
 })
 
@@ -127,11 +106,11 @@ postContentBtn.addEventListener("click", () =>
     window.location.href = "feed.html";
   }
 
-  else if (currentType == "image" || currentType == "video") {
+  else if (currentType == "image") {
     
     const file = mediaContent.files[0]
     if (!file) {
-      alert("Please select an image or video file.")
+      alert("Please select an image file.")
       return
     }
 
@@ -147,6 +126,7 @@ postContentBtn.addEventListener("click", () =>
     reader.readAsDataURL(file);
 
   }
+
 
  
 
