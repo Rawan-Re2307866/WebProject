@@ -116,8 +116,6 @@ Register page ------------------------------------------------------------------
   min-height: 0.7rem;
 }
 
-
-
 /*
 Login Page ----------------------------------------------------------------------------------------------------------------
 */
@@ -240,7 +238,7 @@ Login Page ---------------------------------------------------------------------
 }
 
 .login-body footer a::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -268,8 +266,7 @@ Login Page ---------------------------------------------------------------------
   font-size: 0.8rem;
   display: block;
   margin-top: 0.1rem;
-  min-height: .7rem;
-
+  min-height: 0.7rem;
 }
 
 .signup {
@@ -297,11 +294,10 @@ Login Page ---------------------------------------------------------------------
   position: relative;
   display: inline-block;
   align-self: center;
-
 }
 
 .signup a::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -10px;
   left: 0;
@@ -319,7 +315,6 @@ Login Page ---------------------------------------------------------------------
 .signup a:hover {
   color: var(--color-btn-primary);
 }
-
 
 /*
 Profile ----------------------------------------------------------------------------------------------------------------
@@ -384,7 +379,6 @@ main {
 .profile-content {
   padding: 4rem 1.5rem 1.5rem;
 }
-
 
 .profile-top-row {
   display: flex;
@@ -458,7 +452,6 @@ main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin: 20px 5px 0px;
-
 }
 
 .post-profile {
@@ -560,7 +553,6 @@ main {
     padding: 2.5rem;
     min-width: 500px;
   }
-
 }
 
 @media screen and (min-width: 1080px) {
@@ -591,7 +583,6 @@ main {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
   }
-
 }
 
 /*
@@ -647,7 +638,6 @@ FEED ---------------------------------------------------------------------------
 .post-content {
   background: #f2f4f7;
 
-
   border-radius: 1rem;
   min-height: 14rem;
 
@@ -665,7 +655,6 @@ FEED ---------------------------------------------------------------------------
 }
 
 .bottom-nav {
-
   width: 100%;
   height: 60px;
 
@@ -700,8 +689,6 @@ FEED ---------------------------------------------------------------------------
 .nav-item:hover {
   background: var(--color-btn-primary);
 }
-
-
 
 .post-header {
   display: flex;
@@ -778,7 +765,6 @@ FEED ---------------------------------------------------------------------------
   transition: transform 0.15s ease;
 }
 
-
 main {
   padding-bottom: 80px;
 }
@@ -836,9 +822,7 @@ main {
   transform: scale(1.15);
 }
 
-
 @media (min-width: 768px) {
-
   .feed {
     display: flex;
     justify-content: center;
@@ -855,7 +839,6 @@ main {
     padding: 1.25rem;
   }
 
-
   .post-content {
     width: 100%;
     height: 420px;
@@ -863,7 +846,6 @@ main {
     border-radius: 1.25rem;
     background: #f4f6fa;
   }
-
 
   .profile-pic {
     width: 3rem;
@@ -874,19 +856,16 @@ main {
     font-size: 1.15rem;
   }
 
-
   .post-caption {
     font-size: 1rem;
     line-height: 1.45;
   }
-
 
   .like-btn svg,
   .comment-btn svg {
     width: 2rem;
     height: 2rem;
   }
-
 }
 
 /*
@@ -944,7 +923,6 @@ a {
 .content {
   background: #f2f4f7;
 
-
   border-radius: 1rem;
   min-height: 14rem;
 
@@ -960,10 +938,10 @@ a {
 
   width: 100%;
   height: 80%;
-
 }
 
-.content.post, .post-content.post {
+.content.post,
+.post-content.post {
   background: transparent;
   border-radius: 1rem;
   min-height: 0;
@@ -975,7 +953,6 @@ a {
   height: auto;
 }
 
-
 .content img,
 .content video {
   width: 50%;
@@ -985,7 +962,6 @@ a {
   display: block;
 }
 
-
 /* section 2*/
 .comments-part {
   grid-area: comments-part;
@@ -993,7 +969,7 @@ a {
   flex-direction: column;
 }
 
-.comments-part>article {
+.comments-part > article {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -1063,7 +1039,6 @@ a {
   transition: 0.3s ease;
 }
 
-
 .menu-bar {
   position: absolute;
   top: 6.5rem;
@@ -1093,10 +1068,9 @@ a {
   margin-bottom: 0.5rem;
 }
 
-
 .edit-post-btn,
 .delete-post-btn {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
   color: #332e50;
 }
@@ -1116,15 +1090,12 @@ a {
   pointer-events: auto;
 }
 
-
 /* Tablet */
 @media (min-width: 768px) {
-
   .post-page {
     margin: 3rem;
     grid-template-columns: 3fr 1fr;
-    grid-template-areas:
-      "content-part comments-part";
+    grid-template-areas: "content-part comments-part";
     gap: 1rem;
     padding: 0;
     height: 92%;
@@ -1150,7 +1121,6 @@ a {
     height: 0;
   }
 
-
   .create-post-page {
     position: absolute;
     left: 100px;
@@ -1164,12 +1134,10 @@ a {
     bottom: 1px;
     padding: 0.5rem;
   }
-
 }
 
 /* Desktop */
 @media (min-width: 1080px) {
-
   .top-bar {
     justify-content: flex-start;
     padding: 0;
@@ -1180,7 +1148,6 @@ a {
     top: 7.9rem;
     right: 28rem;
   }
-
 }
 
 /*
@@ -1242,7 +1209,6 @@ Create Post --------------------------------------------------------------------
   margin: 2rem;
   margin-bottom: 0;
   max-width: 60rem;
-
 }
 
 .post-content-btn {
@@ -1271,7 +1237,6 @@ Create Post --------------------------------------------------------------------
   font-weight: 100;
   margin: 0.5rem;
 }
-
 
 .create-post-user {
   display: flex;
@@ -1316,14 +1281,12 @@ Create Post --------------------------------------------------------------------
   max-height: 300px;
 }
 
-
 .text-image-video-content input {
   display: flex;
   margin: 1rem;
   opacity: 0;
   transition: opacity 0.1s ease;
   pointer-events: none;
-
 }
 
 .text-image-video-content input[type="text"] {
@@ -1337,8 +1300,6 @@ Create Post --------------------------------------------------------------------
   opacity: 1;
   pointer-events: auto;
 }
-
-
 
 .post-type-selection-bar {
   display: flex;
@@ -1482,7 +1443,10 @@ Edit Profile -------------------------------------------------------------------
   font-family: inherit;
   background: var(--color-bg-main);
   color: var(--color-text-dark);
-  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s,
+    transform 0.25s;
   width: 100%;
   box-sizing: border-box;
 }
@@ -1569,7 +1533,9 @@ Edit Profile -------------------------------------------------------------------
   font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.25s, transform 0.15s;
+  transition:
+    background 0.25s,
+    transform 0.15s;
 }
 
 .save-btn:hover {
@@ -1591,7 +1557,9 @@ Edit Profile -------------------------------------------------------------------
   font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.25s, color 0.25s;
+  transition:
+    background 0.25s,
+    color 0.25s;
   text-align: center;
   text-decoration: none;
   display: flex;
@@ -1617,7 +1585,9 @@ Edit Profile -------------------------------------------------------------------
   font-weight: 600;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s, transform 0.3s;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
   z-index: 100;
   white-space: nowrap;
 }
