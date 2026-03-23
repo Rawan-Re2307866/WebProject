@@ -1117,8 +1117,6 @@ a {
 }
 
 
-
-
 /* Tablet */
 @media (min-width: 768px) {
 
@@ -1359,21 +1357,24 @@ Create Post --------------------------------------------------------------------
 .post-type-selection-bar button:hover {
   background-color: rgba(220, 220, 220, 0.265);
 }
+
 /*
 Edit Profile ----------------------------------------------------------------------------------------------------------------
 */
-.edit h3{
+.edit h3 {
   color: var(--color-text-dark);
   font-size: 1.5rem;
   margin-bottom: 2rem;
   text-align: center;
 }
+
 .edit-body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   background: var(--color-bg-main);
 }
+
 .edit-body main {
   flex: 1;
   padding: 2rem 1rem 6rem;
@@ -1381,6 +1382,7 @@ Edit Profile -------------------------------------------------------------------
   flex-direction: column;
   align-items: center;
 }
+
 .edit-body main h2 {
   color: var(--color-text-dark);
   font-size: 1.4rem;
@@ -1388,6 +1390,7 @@ Edit Profile -------------------------------------------------------------------
   margin-bottom: 1.5rem;
   text-align: center;
 }
+
 .edit-container {
   background: white;
   border-radius: 16px;
@@ -1397,12 +1400,14 @@ Edit Profile -------------------------------------------------------------------
   max-width: 480px;
   animation: slideUp 0.4s ease-out;
 }
+
 .avatar-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 1.8rem;
 }
+
 .avatar-wrapper {
   position: relative;
   width: 90px;
@@ -1448,6 +1453,7 @@ Edit Profile -------------------------------------------------------------------
   font-size: 0.75rem;
   color: #999;
 }
+
 /* Form fields */
 .edit-form {
   display: flex;
