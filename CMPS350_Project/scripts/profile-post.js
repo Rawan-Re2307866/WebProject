@@ -5,8 +5,7 @@ document.addEventListener("DOMContentLoaded", () =>
     const currentUser = getCurrentUser()
     const posts = getPosts()
 
-    const userPosts = posts.filter( (post) => post.userId === currentUser.id)\
-
+    const userPosts = posts.filter( (post) => post.userId === currentUser.id)
     const postSection = document.querySelector(".posts")
     postSection.innerHTML = " "
     
@@ -44,8 +43,8 @@ document.addEventListener("DOMContentLoaded", () =>
             link.appendChild(textDiv);
           }
       
-          item.appendChild(link);
-          postsSection.appendChild(item);
+          divItem.appendChild(link);
+          postsSection.appendChild(divItem);
     })
 
     const postsCount = document.querySelector(".posts-number .count");
