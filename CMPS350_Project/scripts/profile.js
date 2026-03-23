@@ -1,5 +1,8 @@
+import {getUsers,addUser,updateUser,getCurrentUser,getPosts,updatePost,getCurrentPostId,setCurrentPostId,addPost,getComments,addComment,updateComment} from "./storage.js"
+
+
 document.addEventListener('DOMContentLoaded', function(){
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const currentUser = getCurrentUser()
 
     if (!currentUser){
         window.location.href= 'login.html';
@@ -35,7 +38,7 @@ function displayProfile(profileUser, currentUser){
     document.querySelector(".profile-img").src = profileUser.profilePicture;
 
     const allPosts= JSON.parse(localStorage.getItem('posts')) || [];
-    const userPosts= allPosts.filter(p => p.userid === profileUser.id);
+    const userPosts= allPosts.filter(p => p.userId === profileUser.id);
 
     document.querySelector('.posts-number .count').textContent = userPosts.length;
     document.querySelector('.followers .count').textContent = profileUser.following.length;
@@ -104,19 +107,35 @@ function displayUserPosts(posts) {
         postDiv.className = 'post-profile';
         
     
-        if (post.image) {
+        if (post.type === 'image') {
             const img = document.createElement('img');
-            img.src = post.image;
+            img.src = post.content;
             img.alt = 'Post';
             postDiv.appendChild(img);
-        } else {
+        } 
+        else if (post.type === "video") {
+            const video = document.createElement("video");
+            video.src = post.content;
+            video.muted = true;
+            video.playsInline = true;
+            postDiv.appendChild(video);
+          } 
+          else if (post.type === "text") {
+            const textDiv = document.createElement("div");
+            textDiv.textContent = post.content;
+            textDiv.style.display = "flex";
+            textDiv.style.alignItems = "center";
+            textDiv.style.justifyContent = "center";
+            textDiv.style.padding = "4px";
+            postDiv.appendChild(textDiv);
+
             
-            postDiv.innerHTML = `<p style="padding: 1rem; font-size: 0.9rem; overflow: hidden;">${post.content.substring(0, 50)}...</p>`;
+            /*postDiv.innerHTML = `<p style="padding: 1rem; font-size: 0.9rem; overflow: hidden;">${post.content.substring(0, 50)}...</p>`;*/
         }
         
     
         postDiv.onclick = function() {
-            window.location.href = `post.html?postId=${post.id}`;
+            window.location.href = `post.html?postId=${post.postId}`;
         };
         postDiv.style.cursor = 'pointer';
         

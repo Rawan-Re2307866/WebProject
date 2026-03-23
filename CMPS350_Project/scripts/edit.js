@@ -1,8 +1,9 @@
+import {getUsers,addUser,updateUser,getCurrentUser,getPosts,updatePost,getCurrentPostId,setCurrentPostId,addPost,getComments,addComment,updateComment} from "./storage.js"
 // Edit Profile Page
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const currentUser = getCurrentUser()
     if (!currentUser) {
         window.location.href = 'login.html';
         return;

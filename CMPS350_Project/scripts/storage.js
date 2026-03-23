@@ -21,7 +21,7 @@ function updateUser(updatedUser) {
 }
 
 function getCurrentUser() {
-    return JSON.parse(localStorage.getItem("currentUsers"))
+    return JSON.parse(localStorage.getItem("currentUser"))
 }
 
 /* posts */
