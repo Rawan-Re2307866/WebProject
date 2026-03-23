@@ -1,23 +1,23 @@
 /* Create Post Page */
-
-const createPostPageBtn = document.querySelector(".create-post-page-btn");
-const createPostPage = document.querySelector(".create-post-page");
-const closeCreatePageBtn = document.querySelector(".close-create-post-btn");
 const postContentBtn = document.querySelector(".post-content-btn")
 
-createPostPageBtn.addEventListener("click", () => createPostPage.classList.add("show"));
-closeCreatePageBtn.addEventListener("click", () => createPostPage.classList.remove("show"));
 
+/* create-post.html */
 const textPostTypeBtn = document.querySelector(".text-post-type")
 const imagePostTypeBtn = document.querySelector(".image-post-type")
 const videoPostTypeBtn = document.querySelector(".video-post-type")
 const postType = document.querySelector(".text-image-video-content")
-
-const postContent = document.querySelector(".content")
-const postCaption = document.querySelector(".caption-text")
-const postCaptionText = document.querySelector("#caption-text")
 const mediaContent = document.querySelector("#media-content")
 const textContent = document.querySelector("#text-content")
+const postCaptionText = document.querySelector("#caption-text")
+
+/* post.html */
+const postContent = document.querySelector(".content")
+const postCaption = document.querySelector(".caption-text")
+
+/* feed.html */
+const postContentfeed = document.querySelector(".post-content")
+
 
 let currentType = "text"
 let currentMediaFile = null
