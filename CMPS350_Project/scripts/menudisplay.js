@@ -1,3 +1,4 @@
+import {getUsers,addUser,updateUser,getCurrentUser,getPosts,updatePost,getCurrentPostId,setCurrentPostId,addPost,getComments,addComment,updateComment} from "./storage.js"
 
 const menuBtn = document.querySelector(".menu-btn");
 const menuCloseBtn = document.querySelector(".menu-close-btn");

@@ -1,3 +1,5 @@
+import {getUsers,addUser,updateUser,getCurrentUser,getPosts,updatePost,getCurrentPostId,setCurrentPostId,addPost,getComments,addComment,updateComment} from "./storage.js"
+
 /* Create Post Page */
 const postContentBtn = document.querySelector(".post-content-btn")
 
@@ -98,8 +100,8 @@ postContentBtn.addEventListener("click", () =>
   const newPostId = Date.now()
 
   const newPost = {
-    id: newPostId,
-    user: currentUser,
+    postId: newPostId,
+    userId: currentUser.id,
     caption: captionText ,
     type: currentType,
     content: null,
