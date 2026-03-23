@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () =>
     postSection.innerHTML = " "
     
     if (userPosts.length === 0) {
-        postsSection.innerHTML =
+        postSection.innerHTML =
       '<p style="text-align:center; color:#999; padding:1rem;">No posts yet.</p>';
     return
     }
@@ -44,11 +44,11 @@ document.addEventListener("DOMContentLoaded", () =>
           }
       
           divItem.appendChild(link);
-          postsSection.appendChild(divItem);
+          postSection.appendChild(divItem);
     })
 
     const postsCount = document.querySelector(".posts-number .count");
-    if (postsCountSpan) {
+    if (postsCount) {
       postsCount.textContent = userPosts.length;
     }
 

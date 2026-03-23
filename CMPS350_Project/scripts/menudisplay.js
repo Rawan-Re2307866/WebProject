@@ -11,4 +11,4 @@ menuBtn.addEventListener('click', () => {
 menuCloseBtn.addEventListener('click', () => {
     menuBar.classList.remove('display');
     menuCloseBtn.classList.remove('close');
-});
+})

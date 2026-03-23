@@ -1,24 +1,33 @@
 import {getUsers,addUser,updateUser,getCurrentUser,getPosts,updatePost,getCurrentPostId,setCurrentPostId,addPost,getComments,addComment,updateComment} from "./storage.js"
 
-const currentUser = getCurrentUser()
-const posts = getPosts()
-const users = getUsers()
-const followingPosts = posts.filter((post) => currentUser.following.includes(post.userId))
+
 
 
 document.addEventListener("DOMContentLoaded" , () => 
 {
-    const postContainer = document.querySelector(".post-container")
-    const postTemplate = document.querySelector(".post")
-    postContainer.innerHTML = " "
+    const currentUser = getCurrentUser();
+    const posts = getPosts();
+    const users = getUsers();
 
-    if (followingPosts.length == 0 ) {
+    const postContainer = document.querySelector(".post-container");
+    const postTemplate = document.querySelector(".post");
+
+  
+    postContainer.innerHTML = "";
+
+    const followingPosts = posts.filter((post) => currentUser.following.includes(post.userId))
+    const userPosts = posts.filter( (post) => post.userId === currentUser.id)
+
+    const allFeedPosts = [...userPosts, ...followingPosts];
+
+    if (allFeedPosts.length == 0 ) {
         postContainer.innerHTML = 
         '<p style="text-align: center; color: #999; padding: 2rem;">No posts yet.</p>'
         return
     }
+
     
-    followingPosts.forEach( (post) => {
+    allFeedPosts.forEach( (post) => {
         const poster = users.find( (user) => user.id === post.userId )
         if (!poster) return
 

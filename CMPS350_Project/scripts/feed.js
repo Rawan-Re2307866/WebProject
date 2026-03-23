@@ -1,5 +1,7 @@
+import {getUsers,addUser,updateUser,getCurrentUser,getPosts,updatePost,getCurrentPostId,setCurrentPostId,addPost,getComments,addComment,updateComment} from "./storage.js"
+
 document.addEventListener("DOMContentLoaded", () => {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const currentUser = getCurrentUser()
 
     if (!currentUser) {
         window.location.href = 'login.html';
@@ -10,9 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function loadFeed() {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const allPosts = JSON.parse(localStorage.getItem('posts')) || [];
+    const currentUser = getCurrentUser()
+    const users = getUsers()
+    const allPosts = getPosts()
 
     const followingPosts = allPosts.filter(post =>
         currentUser.following.includes(post.userid)

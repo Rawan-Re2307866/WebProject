@@ -37,7 +37,7 @@ function displayProfile(profileUser, currentUser){
 
     document.querySelector(".profile-img").src = profileUser.profilePicture;
 
-    const allPosts= JSON.parse(localStorage.getItem('posts')) || [];
+    const allPosts= getPosts();
     const userPosts= allPosts.filter(p => p.userId === profileUser.id);
 
     document.querySelector('.posts-number .count').textContent = userPosts.length;
@@ -58,7 +58,7 @@ function displayProfile(profileUser, currentUser){
             toggleFollow(profileUser.id, currentUser);
         };
     }
-    displayUserPosts(userPosts);
+    //displayUserPosts(userPosts);
 
 }
 

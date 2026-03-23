@@ -91,6 +91,10 @@ mediaContent.addEventListener("change", () =>
 })
 
 const currentUser = getCurrentUser()
+const username = document.querySelector(".create-post-username")
+const userPic = document.querySelector(".user-pic")
+username.textContent = currentUser.username
+userPic.src = currentUser.profilePicture
 
 /* Post */
 postContentBtn.addEventListener("click", () => 
@@ -110,9 +114,6 @@ postContentBtn.addEventListener("click", () =>
     comments: [], 
   }
 
-  postCaption.textContent = captionText || ""
-
-  postContent.innerHTML = ""
 
   if (currentType == "text") {
     const text = textContent.value.trim()
@@ -120,13 +121,10 @@ postContentBtn.addEventListener("click", () =>
       alert("Write some text")
       return;
     }
-
     newPost.content = text
 
-    const p = document.createElement("p")
-    p.textContent = text 
-    postContent.appendChild(p)
-    postContentfeed.appendChild(p)
+    addPost(newPost);
+    window.location.href = "feed.html";
   }
 
   else if (currentType == "image" || currentType == "video") {
@@ -137,14 +135,20 @@ postContentBtn.addEventListener("click", () =>
       return
     }
 
-    const url = URL.createObjectURL(file)
-    newPost.content = url
+
+    const reader = new FileReader()
+    reader.onload = function (e) {
+      newPost.content = e.target.result 
+
+      addPost(newPost)
+      window.location.href = "feed.html"
+    };
+
+    reader.readAsDataURL(file);
 
   }
 
-  addPost(newPost)
-
-  window.location.href = "feed.html"
+ 
 
 
 })
