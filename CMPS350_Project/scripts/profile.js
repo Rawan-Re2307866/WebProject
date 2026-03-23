@@ -45,9 +45,9 @@ function displayProfile(profileUser, currentUser){
 
     if (profileUser.id === currentUser.id){
         actionButton.textContent = 'Edit Profile';
-        actionButton.onclick = function(){
-            alert('will still code')
-        };
+        actionButton.onclick = function () {
+    window.location.href = 'edit.html';
+};
     } else{
         const isFollowing = currentUser.following.includes(profileUser.id);
         actionButton.textContent = isFollowing ? 'Unfollow' : 'Follow';
