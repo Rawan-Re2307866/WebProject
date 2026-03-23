@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-    // Redirect to login if not authenticated
     if (!currentUser) {
         window.location.href = 'login.html';
         return;
@@ -15,15 +14,12 @@ function loadFeed() {
     const users = JSON.parse(localStorage.getItem('users')) || [];
     const allPosts = JSON.parse(localStorage.getItem('posts')) || [];
 
-    // Get posts from users that current user is following
     const followingPosts = allPosts.filter(post =>
         currentUser.following.includes(post.userid)
     );
 
-    // Shuffle posts randomly
     const shuffledPosts = shuffleArray(followingPosts);
 
-    // Clear the post container (remove sample posts)
     const postContainer = document.querySelector('.post-container');
     postContainer.innerHTML = '';
 
@@ -32,16 +28,15 @@ function loadFeed() {
         return;
     }
 
-    // Display each post
     shuffledPosts.forEach(post => {
         const poster = users.find(u => u.id === post.userid);
-        if (!poster) return; // Skip if user not found
+        if (!poster) return; 
 
         const postElement = createPostElement(post, poster);
         postContainer.appendChild(postElement);
     });
 
-    // Attach like button listeners
+
     attachLikeListeners();
 }
 
@@ -122,7 +117,6 @@ function attachLikeListeners() {
     });
 }
 
-// Utility function to shuffle array
 function shuffleArray(array) {
     const shuffled = [...array];
     for (let i = shuffled.length - 1; i > 0; i--) {
