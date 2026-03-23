@@ -11,14 +11,6 @@ const mediaContent = document.querySelector("#media-content")
 const textContent = document.querySelector("#text-content")
 const postCaptionText = document.querySelector("#caption-text")
 
-/* post.html */
-const postContent = document.querySelector(".content")
-const postCaption = document.querySelector(".caption-text")
-
-/* feed.html */
-const postContentfeed = document.querySelector(".post-content")
-
-
 let currentType = "text"
 let currentMediaFile = null
 
@@ -96,12 +88,26 @@ mediaContent.addEventListener("change", () =>
   }
 })
 
+const currentUser = getCurrentUser()
 
 /* Post */
 postContentBtn.addEventListener("click", () => 
 {
 
   const captionText = postCaptionText.value.trim()
+  const newPostId = Date.now()
+
+  const newPost = {
+    id: newPostId,
+    user: currentUser,
+    caption: captionText ,
+    type: currentType,
+    content: null,
+    createdAt: new Date().toISOString(),
+    likes: 0, 
+    comments: [], 
+  }
+
   postCaption.textContent = captionText || ""
 
   postContent.innerHTML = ""
@@ -113,9 +119,12 @@ postContentBtn.addEventListener("click", () =>
       return;
     }
 
+    newPost.content = text
+
     const p = document.createElement("p")
     p.textContent = text 
     postContent.appendChild(p)
+    postContentfeed.appendChild(p)
   }
 
   else if (currentType == "image" || currentType == "video") {
@@ -127,24 +136,13 @@ postContentBtn.addEventListener("click", () =>
     }
 
     const url = URL.createObjectURL(file)
-
-    if(currentType == "image") {
-      const img = document.createElement("img");
-      img.src = url
-      img.alt = "post image"
-      postContent.appendChild(img)
-    }
-    else {
-      const video = document.createElement("video");
-      video.src = url
-      video.controls = true
-      postContent.appendChild(video)
-  
-    }
+    newPost.content = url
 
   }
 
-  createPostPage.classList.remove("show")
-  postContent.classList.add("post")
+  addPost(newPost)
+
+  window.location.href = "feed.html"
+
 
 })

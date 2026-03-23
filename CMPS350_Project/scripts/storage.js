@@ -20,6 +20,10 @@ function updateUser(updatedUser) {
     }
 }
 
+function getCurrentUser() {
+    return JSON.parse(localStorage.getItem("currentUsers"))
+}
+
 /* posts */
 function getPosts() {
     return JSON.parse(localStorage.getItem("posts")) || [];
@@ -38,6 +42,14 @@ function updatePost(updatedPost) {
         posts[index] = updatedPost;
         localStorage.setItem("posts", JSON.stringify(posts));
     }
+}
+
+function getCurrentPostId() {
+    return JSON.parse(locslStorage.getItem("currentPostId"))
+}
+
+function setCurrentPostId(id) {
+    localStorage.setItem("currentPostId", JSON.stringify(id))
 }
 
 /* comments */
