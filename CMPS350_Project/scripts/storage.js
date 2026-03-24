@@ -37,7 +37,7 @@ function addPost(post) {
 
 function updatePost(updatedPost) {
     const posts = getPosts();
-    const index = posts.findIndex(p => p.id === updatedPost.id);
+    const index = posts.findIndex(p => p.postId === updatedPost.postId);
     if (index !== -1) {
         posts[index] = updatedPost;
         localStorage.setItem("posts", JSON.stringify(posts));

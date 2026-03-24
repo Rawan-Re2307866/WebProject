@@ -29,9 +29,9 @@ function loadFeed() {
   const users = getUsers();
   const allPosts = getPosts();
 
-  const followingPosts = allPosts.filter((post) =>
-    currentUser.following.includes(post.userId),
-  );
+const followingPosts = allPosts.filter((post) =>
+    currentUser.following.includes(post.userId) && post.userId !== currentUser.id
+);
 
   const shuffledPosts = shuffleArray(followingPosts);
 
@@ -45,7 +45,7 @@ function loadFeed() {
   }
 
   shuffledPosts.forEach((post) => {
-    const poster = users.find((u) => u.id === post.userid);
+    const poster = users.find((u) => u.id === post.userId);
     if (!poster) return;
 
     const postElement = createPostElement(post, poster);
@@ -58,6 +58,7 @@ function loadFeed() {
 function createPostElement(post, poster) {
   const article = document.createElement("article");
   article.className = "post";
+  article.dataset.postId = post.postId;
 
   const postHeader = document.createElement("div");
   postHeader.className = "post-header";
@@ -68,13 +69,13 @@ function createPostElement(post, poster) {
         </div>
     `;
 
-  const postContent = document.createElement("div");
-  postContent.className = "post-content";
-  if (post.image) {
-    postContent.innerHTML = `<img src="${post.image}" alt="Post image" style="width: 100%; object-fit: cover;">`;
-  } else {
+const postContent = document.createElement("div");
+postContent.className = "post-content";
+if (post.type === "image") {
+    postContent.innerHTML = `<img src="${post.content}" alt="Post image" style="width: 100%; object-fit: cover;">`;
+} else {
     postContent.innerHTML = `<p>${post.content}</p>`;
-  }
+}
 
   const postActions = document.createElement("div");
   postActions.className = "post-actions";
@@ -89,8 +90,7 @@ function createPostElement(post, poster) {
         </button>
         <span class="like-count">${post.likes || 0}</span>
 
-        <a href="post.html?postId=${post.id}" class="comment-btn" aria-label="Open comments">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+<a href="post.html?postId=${post.postId}" class="comment-btn" aria-label="Open comments">            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="#83778d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="icon icon-tabler icon-tabler-bubble">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -104,7 +104,7 @@ function createPostElement(post, poster) {
   postCaption.className = "post-caption";
   postCaption.innerHTML = `
         <span class="caption-user"><strong>${poster.username}</strong></span>
-        <span class="caption-text">${post.content || ""}</span>
+        <span class="caption-text">${post.caption || ""}</span>
     `;
 
   article.appendChild(postHeader);
@@ -115,18 +115,59 @@ function createPostElement(post, poster) {
   return article;
 }
 
+// function attachLikeListeners() {
+//   const likeButtons = document.querySelectorAll(".like-btn");
+
+//   likeButtons.forEach((button) => {
+//     const likeCount = button.nextElementSibling;
+//     button.addEventListener("click", () => {
+//       button.classList.toggle("liked");
+//       let count = parseInt(likeCount.textContent);
+//       if (button.classList.contains("liked")) {
+//         likeCount.textContent = count + 1;
+//       } else {
+//         likeCount.textContent = count - 1;
+//       }
+//     });
+//   });
+// }
 function attachLikeListeners() {
+  const currentUser = getCurrentUser();
+  const allPosts = getPosts();
+
+  const likedKey = `likedPosts_${currentUser.id}`;
+  const likedPosts = JSON.parse(localStorage.getItem(likedKey)) || [];
+
   const likeButtons = document.querySelectorAll(".like-btn");
 
   likeButtons.forEach((button) => {
+    const article = button.closest("article");
+    const postId = article.dataset.postId;
     const likeCount = button.nextElementSibling;
+
+    if (likedPosts.includes(postId)) {
+      button.classList.add("liked");
+    }
+
     button.addEventListener("click", () => {
-      button.classList.toggle("liked");
-      let count = parseInt(likeCount.textContent);
-      if (button.classList.contains("liked")) {
-        likeCount.textContent = count + 1;
+      const alreadyLiked = likedPosts.includes(postId);
+
+      if (alreadyLiked) {
+        likedPosts.splice(likedPosts.indexOf(postId), 1);
+        button.classList.remove("liked");
+        likeCount.textContent = parseInt(likeCount.textContent) - 1;
       } else {
-        likeCount.textContent = count - 1;
+        likedPosts.push(postId);
+        button.classList.add("liked");
+        likeCount.textContent = parseInt(likeCount.textContent) + 1;
+      }
+
+      localStorage.setItem(likedKey, JSON.stringify(likedPosts));
+
+      const post = allPosts.find((p) => String(p.postId) === String(postId));
+      if (post) {
+        post.likes = parseInt(likeCount.textContent);
+        updatePost(post);
       }
     });
   });

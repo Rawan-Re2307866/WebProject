@@ -52,12 +52,30 @@ likeCount.textContent = post.likes ?? 0;
 captionUser.textContent = poster ? poster.username : "";
 captionText.textContent = post.caption || "";
 
+// Restore like state from localStorage (same key used by feed.js)
+const likedKey = `likedPosts_${currentUser.id}`;
+const likedPosts = JSON.parse(localStorage.getItem(likedKey)) || [];
+const postIdStr = String(post.postId);
+
+if (likedPosts.includes(postIdStr)) {
+  likeBtn.classList.add("liked");
+}
+
 likeBtn.addEventListener("click", () => {
-  likeBtn.classList.toggle("liked");
-  let count = parseInt(likeCount.textContent, 10);
-  count = likeBtn.classList.contains("liked") ? count + 1 : count - 1;
-  likeCount.textContent = count;
-  post.likes = count;
+  const alreadyLiked = likedPosts.includes(postIdStr);
+
+  if (alreadyLiked) {
+    likedPosts.splice(likedPosts.indexOf(postIdStr), 1);
+    likeBtn.classList.remove("liked");
+    post.likes = (post.likes ?? 0) - 1;
+  } else {
+    likedPosts.push(postIdStr);
+    likeBtn.classList.add("liked");
+    post.likes = (post.likes ?? 0) + 1;
+  }
+
+  likeCount.textContent = post.likes;
+  localStorage.setItem(likedKey, JSON.stringify(likedPosts));
   updatePost(post);
 });
 

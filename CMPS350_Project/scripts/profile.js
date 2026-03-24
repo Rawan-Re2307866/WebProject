@@ -41,8 +41,8 @@ function displayProfile(profileUser, currentUser){
     const userPosts= allPosts.filter(p => p.userId === profileUser.id);
 
     document.querySelector('.posts-number .count').textContent = userPosts.length;
-    document.querySelector('.followers .count').textContent = profileUser.followers.length;
-    document.querySelector('.following .count').textContent = profileUser.following.length;
+document.querySelector('.followers .count').textContent = (profileUser.followers || []).length;
+document.querySelector('.following .count').textContent = (profileUser.following || []).length;
 
     const actionButton = document.querySelector('.edit-btn');
 
@@ -58,7 +58,7 @@ function displayProfile(profileUser, currentUser){
             toggleFollow(profileUser.id, currentUser);
         };
     }
-    //displayUserPosts(userPosts);
+    displayUserPosts(userPosts);
 
 }
 
