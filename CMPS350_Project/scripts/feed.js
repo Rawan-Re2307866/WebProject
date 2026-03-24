@@ -1,71 +1,84 @@
-import {getUsers,addUser,updateUser,getCurrentUser,getPosts,updatePost,getCurrentPostId,setCurrentPostId,addPost,getComments,addComment,updateComment} from "./storage.js"
+import {
+  getUsers,
+  addUser,
+  updateUser,
+  getCurrentUser,
+  getPosts,
+  updatePost,
+  getCurrentPostId,
+  setCurrentPostId,
+  addPost,
+  getComments,
+  addComment,
+  updateComment,
+} from "./storage.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    const currentUser = getCurrentUser()
+  const currentUser = getCurrentUser();
 
-    if (!currentUser) {
-        window.location.href = 'login.html';
-        return;
-    }
+  if (!currentUser) {
+    window.location.href = "login.html";
+    return;
+  }
 
-    loadFeed();
+  loadFeed();
 });
 
 function loadFeed() {
-    const currentUser = getCurrentUser()
-    const users = getUsers()
-    const allPosts = getPosts()
+  const currentUser = getCurrentUser();
+  const users = getUsers();
+  const allPosts = getPosts();
 
-    const followingPosts = allPosts.filter(post =>
-        currentUser.following.includes(post.userid)
-    );
+  const followingPosts = allPosts.filter((post) =>
+    currentUser.following.includes(post.userId),
+  );
 
-    const shuffledPosts = shuffleArray(followingPosts);
+  const shuffledPosts = shuffleArray(followingPosts);
 
-    const postContainer = document.querySelector('.post-container');
-    postContainer.innerHTML = '';
+  const postContainer = document.querySelector(".post-container");
+  postContainer.innerHTML = "";
 
-    if (shuffledPosts.length === 0) {
-        postContainer.innerHTML = '<p style="text-align: center; color: #999; padding: 2rem;">No posts from users you follow. Start following people to see their posts!</p>';
-        return;
-    }
+  if (shuffledPosts.length === 0) {
+    postContainer.innerHTML =
+      '<p style="text-align: center; color: #999; padding: 2rem;">No posts from users you follow. Start following people to see their posts!</p>';
+    return;
+  }
 
-    shuffledPosts.forEach(post => {
-        const poster = users.find(u => u.id === post.userid);
-        if (!poster) return; 
+  shuffledPosts.forEach((post) => {
+    const poster = users.find((u) => u.id === post.userid);
+    if (!poster) return;
 
-        const postElement = createPostElement(post, poster);
-        postContainer.appendChild(postElement);
-    });
+    const postElement = createPostElement(post, poster);
+    postContainer.appendChild(postElement);
+  });
 
-
-    attachLikeListeners();
+  attachLikeListeners();
 }
 
 function createPostElement(post, poster) {
-    const article = document.createElement('article');
-    article.className = 'post';
+  const article = document.createElement("article");
+  article.className = "post";
 
-    const postHeader = document.createElement('div');
-    postHeader.className = 'post-header';
-    postHeader.innerHTML = `
+  const postHeader = document.createElement("div");
+  postHeader.className = "post-header";
+  postHeader.innerHTML = `
         <img src="${poster.profilePicture}" alt="${poster.username} profile picture" class="profile-pic">
         <div class="post-user-info">
             <h3 class="username">${poster.username}</h3>
         </div>
     `;
 
-    const postContent = document.createElement('div');
-    postContent.className = 'post-content';
-    if (post.image) {
-        postContent.innerHTML = `<img src="${post.image}" alt="Post image" style="width: 100%; object-fit: cover;">`;
-    } else {
-        postContent.innerHTML = `<p>${post.content}</p>`;
-    }
+  const postContent = document.createElement("div");
+  postContent.className = "post-content";
+  if (post.image) {
+    postContent.innerHTML = `<img src="${post.image}" alt="Post image" style="width: 100%; object-fit: cover;">`;
+  } else {
+    postContent.innerHTML = `<p>${post.content}</p>`;
+  }
 
-    const postActions = document.createElement('div');
-    postActions.className = 'post-actions';
-    postActions.innerHTML = `
+  const postActions = document.createElement("div");
+  postActions.className = "post-actions";
+  postActions.innerHTML = `
         <button class="like-btn" aria-label="Like post">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -87,43 +100,43 @@ function createPostElement(post, poster) {
         </a>
     `;
 
-    const postCaption = document.createElement('div');
-    postCaption.className = 'post-caption';
-    postCaption.innerHTML = `
+  const postCaption = document.createElement("div");
+  postCaption.className = "post-caption";
+  postCaption.innerHTML = `
         <span class="caption-user"><strong>${poster.username}</strong></span>
-        <span class="caption-text">${post.content || ''}</span>
+        <span class="caption-text">${post.content || ""}</span>
     `;
 
-    article.appendChild(postHeader);
-    article.appendChild(postContent);
-    article.appendChild(postActions);
-    article.appendChild(postCaption);
+  article.appendChild(postHeader);
+  article.appendChild(postContent);
+  article.appendChild(postActions);
+  article.appendChild(postCaption);
 
-    return article;
+  return article;
 }
 
 function attachLikeListeners() {
-    const likeButtons = document.querySelectorAll(".like-btn");
+  const likeButtons = document.querySelectorAll(".like-btn");
 
-    likeButtons.forEach(button => {
-        const likeCount = button.nextElementSibling;
-        button.addEventListener("click", () => {
-            button.classList.toggle("liked");
-            let count = parseInt(likeCount.textContent);
-            if (button.classList.contains("liked")) {
-                likeCount.textContent = count + 1;
-            } else {
-                likeCount.textContent = count - 1;
-            }
-        });
+  likeButtons.forEach((button) => {
+    const likeCount = button.nextElementSibling;
+    button.addEventListener("click", () => {
+      button.classList.toggle("liked");
+      let count = parseInt(likeCount.textContent);
+      if (button.classList.contains("liked")) {
+        likeCount.textContent = count + 1;
+      } else {
+        likeCount.textContent = count - 1;
+      }
     });
+  });
 }
 
 function shuffleArray(array) {
-    const shuffled = [...array];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
 }
