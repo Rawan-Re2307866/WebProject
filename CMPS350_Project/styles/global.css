@@ -1158,7 +1158,7 @@ a {
   background: none;
   border: none;
   opacity: 0;
-  transition: opacity 0.3 ease;
+  transition: opacity 0.3s ease;
   pointer-events: none;
 }
 
