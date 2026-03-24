@@ -31,12 +31,9 @@ document.addEventListener("DOMContentLoaded", () =>
         else if (post.type === "text") {
             const textDiv = document.createElement("div");
             textDiv.textContent = post.content;
-            textDiv.style.display = "flex";
-            textDiv.style.alignItems = "center";
-            textDiv.style.justifyContent = "center";
-            textDiv.style.padding = "4px";
+            textDiv.classList.add("text-preview");
             link.appendChild(textDiv);
-          }
+        }
       
           divItem.appendChild(link);
           postSection.appendChild(divItem);

@@ -47,9 +47,6 @@ if (post.type === "text") {
 else if (post.type === "image") {
   content.innerHTML = `<img src="${post.content}" alt="Post image">`
 }
-else if (post.type === "video") {
-  content.innerHTML = `<video src="${post.content}" controls></video>`
-}
 
 likeCount.textContent = post.likes ?? 0;
 captionUser.textContent = poster ? poster.username : "";
@@ -65,6 +62,7 @@ likeBtn.addEventListener("click", () => {
 });
 
 content.classList.add("post")
+
 
 const commentsContainer = document.querySelector(".other-comments")
   const comments = getComments()

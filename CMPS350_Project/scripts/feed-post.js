@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded" , () =>
 
         postContent.classList.add("post")
         postContainer.appendChild(article)
+        
 
 
     })
