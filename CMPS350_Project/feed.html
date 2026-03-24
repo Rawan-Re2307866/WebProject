@@ -11,12 +11,16 @@
 <body class="feed-body">
     <header class="top-bar">
         <img src="images/logo.png" alt="AR squared logo" class="logo">
+         <div class="search-wrapper">
+            <input type="text" id="search-input" placeholder="Search users..." autocomplete="off">
+            <div class="search-results" id="search-results"></div>
+        </div>
     </header>
 
     <main class="feed">
         <section class="post-container">
 
-            <article class="post">
+            <!-- <article class="post">
                 <div class="post-header">
                     <img src="images/prof1.png" alt="User profile picture" class="profile-pic">
                     <div class="post-user-info">
@@ -90,7 +94,7 @@
                     <span class="caption-text">Another caption can go here.</span>
                 </div>
 
-            </article>
+            </article> -->
 
         </section>
     </main>
@@ -125,8 +129,9 @@
         </a>
     </footer>
     <script type="module" src="scripts/storage.js"></script>
-   <!-- <script type="module" src="scripts/feed.js"></script> -->
+   <script type="module" src="scripts/feed.js"></script>
     <script  type="module" src="scripts/feed-post.js"></script>
+     <script src="scripts/search.js"></script>
 </body>
 
 </html>
