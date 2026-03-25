@@ -153,7 +153,7 @@ function setupPostTabs(posts){
             if (filter === 'text'){
                 postsContainer.classList.add('text-layout');
             }else{
-                postsContainer.classList.add('text-layout')
+                postsContainer.classList.remove('text-layout');
             }
             displayUserPosts(posts, filter);
         });
