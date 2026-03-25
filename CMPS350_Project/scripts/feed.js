@@ -63,10 +63,14 @@ function createPostElement(post, poster) {
   const postHeader = document.createElement("div");
   postHeader.className = "post-header";
   postHeader.innerHTML = `
-        <img src="${poster.profilePicture}" alt="${poster.username} profile picture" class="profile-pic">
-        <div class="post-user-info">
-            <h3 class="username">${poster.username}</h3>
-        </div>
+        <a href="profile.html?userId=${poster.id}">
+    <img src="${poster.profilePicture}" alt="${poster.username} profile picture" class="profile-pic">
+  </a>
+  <div class="post-user-info">
+    <a href="profile.html?userId=${poster.id}">
+      <h3 class="username">${poster.username}</h3>
+    </a>
+  </div>
     `;
 
 const postContent = document.createElement("div");
