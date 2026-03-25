@@ -58,11 +58,19 @@ document.querySelector('.following .count').textContent = (profileUser.following
             toggleFollow(profileUser.id, currentUser);
         };
     }
-    displayUserPosts(userPosts);
+    displayUserPosts(userPosts, 'image');
+    setupPostTabs(userPosts);
+    const logoutbtn= document.querySelector('.logout-btn');
+    logoutbtn.onclick = function(){
+        if(confirm('Are you sure you want to log out of this account?')){
+        localStorage.removeItem('currentUser');
+        window.location.href = 'login.html'
+        }
+    }
 
 }
 
-function toggleFollow(userId, currentUser) {
+function toggleFollow(userId, currentUser23) {
     const users = JSON.parse(localStorage.getItem('users')) || [];
     
     
@@ -93,52 +101,61 @@ function toggleFollow(userId, currentUser) {
     location.reload();
 }
 
-function displayUserPosts(posts) {
-    const postsContainer = document.querySelector('.posts');
-    postsContainer.innerHTML = ''; 
-    
-    if (posts.length === 0) {
-        postsContainer.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #999;">No posts yet</p>';
+function displayUserPosts(posts, filter = 'image') {
+    const postsContainer = document.getElementById('posts-container');
+    postsContainer.innerHTML='';
+
+    const filteredPosts = posts.filter(post => post.type=== filter);
+
+    if (filteredPosts.length === 0){
+        const message = filter === 'image'? 'No image posts yet' : 'No text posts yet'
+        postsContainer.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #999; padding: 20px;">${message}</p>`;
         return;
     }
-    
-    posts.forEach(post => {
-        const postDiv = document.createElement('div');
-        postDiv.className = 'post-profile';
-        
-    
-        if (post.type === 'image') {
+
+    filteredPosts.forEach(post => {
+        const postDiv = document.createElement('Div');
+        postDiv.className= 'post-profile';
+        if (post.type === 'image'){
             const img = document.createElement('img');
             img.src = post.content;
             img.alt = 'Post';
-            postDiv.appendChild(img);
-        } 
-        else if (post.type === "video") {
-            const video = document.createElement("video");
-            video.src = post.content;
-            video.muted = true;
-            video.playsInline = true;
-            postDiv.appendChild(video);
-          } 
-          else if (post.type === "text") {
-            const textDiv = document.createElement("div");
-            textDiv.textContent = post.content;
-            textDiv.style.display = "flex";
-            textDiv.style.alignItems = "center";
-            textDiv.style.justifyContent = "center";
-            textDiv.style.padding = "4px";
-            postDiv.appendChild(textDiv);
-
-            
-            /*postDiv.innerHTML = `<p style="padding: 1rem; font-size: 0.9rem; overflow: hidden;">${post.content.substring(0, 50)}...</p>`;*/
+            postDiv.appendChild(img)
+        } else{
+            postDiv.innerHTML = `<div style="padding: 1rem; height: 100%; display: flex; align-items: center; justify-content: center; background: #f0f0f0; border-radius: 8px;">
+                    <p style="font-size: 0.8rem; color: #333; margin: 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                        ${post.content}
+                    </p>
+                </div>`;
         }
-        
-    
-        postDiv.onclick = function() {
-            window.location.href = `post.html?postId=${post.postId}`;
+
+        postDiv.onclick = function(){
+            window.location.href = `post.html?postId=${post.id}`;
         };
         postDiv.style.cursor = 'pointer';
-        
         postsContainer.appendChild(postDiv);
+
+    });
+    
+}
+
+function setupPostTabs(posts){
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const postsContainer = document.getElementById('posts-container');
+
+    tabButtons.forEach(btn =>{
+        btn.addEventListener('click', function(){
+            tabButtons.forEach(b=> b.classList.remove('active'));
+
+            this.classList.add('active');
+            const filter = this.getAttribute('data-tab');
+
+            if (filter === 'text'){
+                postsContainer.classList.add('text-layout');
+            }else{
+                postsContainer.classList.add('text-layout')
+            }
+            displayUserPosts(posts, filter);
+        });
     });
 }
