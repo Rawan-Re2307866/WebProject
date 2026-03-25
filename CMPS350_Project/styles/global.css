@@ -527,7 +527,7 @@ main {
   display: grid;
   grid-template-columns: repeat(3,1fr);
   gap: 5px;
-  padding: 10px 3rem;
+  padding: 10px 1rem;
   max-width: 100%;
   margin-top: 10px;
   margin: 0.5rem;
