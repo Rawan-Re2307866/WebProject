@@ -30,6 +30,11 @@ if(!post) {
 
 const poster = users.find( (u) => u.id === post.userId)
 
+const posterLinks = document.querySelectorAll(".poster")
+posterLinks.forEach((link) => {
+  link.href = `profile.html?userId=${poster.id}`;
+})
+
 const profilePic = document.querySelector(".profile-pic");
 const username = document.querySelector(".username");
 const content = document.querySelector(".content");
@@ -52,7 +57,6 @@ likeCount.textContent = post.likes ?? 0;
 captionUser.textContent = poster ? poster.username : "";
 captionText.textContent = post.caption || "";
 
-// Restore like state from localStorage (same key used by feed.js)
 const likedKey = `likedPosts_${currentUser.id}`;
 const likedPosts = JSON.parse(localStorage.getItem(likedKey)) || [];
 const postIdStr = String(post.postId);
@@ -82,7 +86,7 @@ likeBtn.addEventListener("click", () => {
 content.classList.add("post")
 
 
-const commentsContainer = document.querySelector(".other-comments")
+  const commentsContainer = document.querySelector(".other-comments")
   const comments = getComments()
   const postComments = comments.filter((c) => c.postId === postId)
   postComments.forEach(renderComment)
@@ -121,10 +125,14 @@ function renderComment(comment) {
   divItem.classList.add("comment-item")
   divItem.style.cssText = "margin: 10px 0; padding: 8px; background: none; font-size: x-small;"
 
+
+
   divItem.innerHTML = `
+  <a href="profile.html?userId=${comment.userId}" class="comment-user-link">
     <strong>${comment.username}</strong>
-    <span style="margin-left: 4px;">${comment.content}</span>
-  `
+  </a>
+  <span style="margin-left: 4px;">${comment.content}</span>
+`
 
   commentsContainer.appendChild(divItem)
 }

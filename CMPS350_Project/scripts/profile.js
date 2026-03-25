@@ -41,8 +41,8 @@ function displayProfile(profileUser, currentUser){
     const userPosts= allPosts.filter(p => p.userId === profileUser.id);
 
     document.querySelector('.posts-number .count').textContent = userPosts.length;
-document.querySelector('.followers .count').textContent = (profileUser.followers || []).length;
-document.querySelector('.following .count').textContent = (profileUser.following || []).length;
+    document.querySelector('.followers .count').textContent = (profileUser.followers || []).length;
+    document.querySelector('.following .count').textContent = (profileUser.following || []).length;
 
     const actionButton = document.querySelector('.edit-btn');
 
@@ -70,7 +70,7 @@ document.querySelector('.following .count').textContent = (profileUser.following
 
 }
 
-function toggleFollow(userId, currentUser23) {
+function toggleFollow(userId, currentUser) {
     const users = JSON.parse(localStorage.getItem('users')) || [];
     
     
@@ -130,7 +130,7 @@ function displayUserPosts(posts, filter = 'image') {
         }
 
         postDiv.onclick = function(){
-            window.location.href = `post.html?postId=${post.id}`;
+            window.location.href = `post.html?postId=${post.postId}`;
         };
         postDiv.style.cursor = 'pointer';
         postsContainer.appendChild(postDiv);
