@@ -70,7 +70,7 @@ document.querySelector('.following .count').textContent = (profileUser.following
 
 }
 
-function toggleFollow(userId, currentUser23) {
+function toggleFollow(userId, currentUser) {
     const users = JSON.parse(localStorage.getItem('users')) || [];
     
     
