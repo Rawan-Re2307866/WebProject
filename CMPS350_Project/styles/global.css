@@ -2051,3 +2051,67 @@ Edit Profile -------------------------------------------------------------------
     padding: 2.5rem;
   }
 }
+/* Settings dropdown */
+.settings-wrapper {
+  position: relative;
+  margin-left: auto;
+}
+
+.header-settings-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-settings-btn:hover {
+  opacity: 0.75;
+}
+
+.settings-dropdown {
+  display: none;
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  min-width: 160px;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.settings-dropdown.open {
+  display: block;
+}
+
+.settings-dropdown button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.settings-dropdown button:hover {
+  background: var(--color-primary-light);
+}
+
+#delete-account-btn {
+  color: #7e1c1c !important;
+}
+
+#delete-account-btn:hover {
+  background: #fde8e8 !important;
+}

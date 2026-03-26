@@ -71,22 +71,49 @@ function displayProfile(profileUser, currentUser) {
     actionButton.onclick = function () {
       window.location.href = "edit.html";
     };
-    if (headerLogoutBtn) {
-      headerLogoutBtn.style.display = "flex";
-      headerLogoutBtn.onclick = function () {
-        if (confirm("Are you sure you want to log out of this account?")) {
-          localStorage.removeItem("currentUser");
-          window.location.href = "login.html";
-        }
-      };
+    const settingsBtn = document.getElementById("settings-btn");
+const settingsDropdown = document.getElementById("settings-dropdown");
+const logoutBtn = document.getElementById("logout-btn");
+const deleteAccountBtn = document.getElementById("delete-account-btn");
+
+if (settingsBtn) {
+  settingsBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    settingsDropdown.classList.toggle("open");
+  });
+
+  document.addEventListener("click", () => {
+    settingsDropdown.classList.remove("open");
+  });
+}
+
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", () => {
+    if (confirm("Are you sure you want to log out?")) {
+      localStorage.removeItem("currentUser");
+      window.location.href = "login.html";
     }
+  });
+}
+
+if (deleteAccountBtn) {
+  deleteAccountBtn.addEventListener("click", () => {
+    if (confirm("Are you sure you want to permanently delete your account? This cannot be undone.")) {
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const updated = users.filter(u => u.id !== currentUser.id);
+      localStorage.setItem("users", JSON.stringify(updated));
+      localStorage.removeItem("currentUser");
+      window.location.href = "register.html";
+    }
+  });
+}
   } else {
     const isFollowing = currentUser.following.includes(profileUser.id);
     actionButton.textContent = isFollowing ? "Unfollow" : "Follow";
     actionButton.onclick = function () {
       toggleFollow(profileUser.id, currentUser);
     };
-    if (headerLogoutBtn) headerLogoutBtn.style.display = "none";
+    
   }
   displayUserPosts(userPosts, "image");
   setupPostTabs(userPosts);
