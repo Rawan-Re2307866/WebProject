@@ -80,4 +80,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     })
+
+    //  register password
+    const toggleRegisterPassword = document.getElementById('toggleRegisterPassword');
+    const registerPasswordInput = document.getElementById('register-password');
+    const registerEyeIcon = toggleRegisterPassword.querySelector('.eye-icon');
+    const registerEyeSlashIcon = toggleRegisterPassword.querySelector('.eye-slash-icon');
+
+    toggleRegisterPassword.addEventListener('click', function (e) {
+        e.preventDefault();
+        const type = registerPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        registerPasswordInput.setAttribute('type', type);
+
+        if (type === 'text') {
+            registerEyeIcon.classList.add('hidden');
+            registerEyeSlashIcon.classList.remove('hidden');
+        } else {
+            registerEyeIcon.classList.remove('hidden');
+            registerEyeSlashIcon.classList.add('hidden');
+        }
+    });
+
+    // confirm password
+    const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+    const confirmPasswordInput = document.getElementById('check-password');
+    const confirmEyeIcon = toggleConfirmPassword.querySelector('.eye-icon');
+    const confirmEyeSlashIcon = toggleConfirmPassword.querySelector('.eye-slash-icon');
+
+    toggleConfirmPassword.addEventListener('click', function (e) {
+        e.preventDefault();
+        const type = confirmPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        confirmPasswordInput.setAttribute('type', type);
+
+        if (type === 'text') {
+            confirmEyeIcon.classList.add('hidden');
+            confirmEyeSlashIcon.classList.remove('hidden');
+        } else {
+            confirmEyeIcon.classList.remove('hidden');
+            confirmEyeSlashIcon.classList.add('hidden');
+        }
+    });
 })
