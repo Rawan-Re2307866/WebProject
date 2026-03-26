@@ -478,10 +478,12 @@ main {
   font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: 
+  background 0.2s;
   width: 100%;
   margin-top: 0.5rem;
 }
+
 .logout-btn:hover{
   background-color: var(--color-btn-primary-hover);
 }
@@ -1138,6 +1140,19 @@ a {
   display: block;
 }
 
+.content.post,
+.post-content.post {
+  background: transparent;
+  border-radius: 1rem;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.8rem;
+  width: 100%;
+  height: auto;
+}
+
 .content.post-text,
 .post-content.post-text {
   background: transparent;
@@ -1210,6 +1225,13 @@ a {
   border: none;
   margin-left: 0.5rem;
   flex-grow: 1;
+}
+
+.comment-time, .post-time {
+  display: inline-block;
+  margin-left: 0.25rem;
+  color: #999;
+  font-size: 0.5rem;
 }
 
 /* Post Menu */

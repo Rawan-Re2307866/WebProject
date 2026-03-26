@@ -44,9 +44,11 @@ const likeCount = document.querySelector(".like-count");
 const captionUser = document.querySelector(".caption-user");
 const captionText = document.querySelector(".caption-text");
 const commentsPart = document.querySelector(".comments-part")
+const postTime = document.querySelector(".post-time")
 
 username.textContent = poster.username
 profilePic.src = poster.profilePicture
+postTime.textContent = timeAgo(post.createdAt)
 
 if (post.type === "text") {
   content.innerHTML = `<p>${post.content}</p>`
@@ -134,8 +136,9 @@ function renderComment(comment) {
 
   const divItem = document.createElement("div")
   divItem.classList.add("comment-item")
-  divItem.style.cssText = "margin: 10px 0; padding: 8px; background: none; font-size: x-small;"
+  divItem.style.cssText = "margin: 10px 0; padding: 8px; background: none; font-size: small;"
 
+  const commentTime = timeAgo(comment.createdAt)
 
 
   divItem.innerHTML = `
@@ -143,6 +146,7 @@ function renderComment(comment) {
     <strong>${comment.username}</strong>
   </a>
   <span style="margin-left: 4px;">${comment.content}</span>
+  <span class="comment-time">${commentTime}</span>
 `
 
   commentsContainer.appendChild(divItem)
@@ -196,6 +200,45 @@ else if (post.userId !== currentUser.id) {
 }
 
 })
+
+
+
+function timeAgo(isoString) {
+  const now = new Date();
+  const past = new Date(isoString);
+  const diffMs = now - past;
+
+  const sec = Math.floor(diffMs / 1000);
+  const min = Math.floor(sec / 60);
+  const hr  = Math.floor(min / 60);
+  const day = Math.floor(hr / 24);
+  const week = Math.floor(day / 7);
+  const month = Math.floor(day / 30);
+  const year = Math.floor(day / 365);
+
+  if (day < 1) {
+    if (min < 1) return "just now";
+    if (min < 60) return `${min}m`;
+    return `${hr}h`;
+  }
+
+  if (day < 7) {
+    return `${day}d`;
+  }
+
+  if (day < 30) {
+    return `${week}w`;
+  }
+
+  if (day < 365) {
+    return `${month}mo`;
+  }
+
+  return `${year}y`;
+}
+
+
+
 
 
 

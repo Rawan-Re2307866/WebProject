@@ -70,8 +70,10 @@ function createPostElement(post, poster) {
     <a href="profile.html?userId=${poster.id}">
       <h3 class="username">${poster.username}</h3>
     </a>
+    <span class="post-time">${timeAgo(post.createdAt)}</span>
   </div>
     `;
+
 
 const postContent = document.createElement("div");
 postContent.className = "post-content";
@@ -185,3 +187,46 @@ function shuffleArray(array) {
   }
   return shuffled;
 }
+
+
+function timeAgo(isoString) {
+  const now = new Date();
+  const past = new Date(isoString);
+  const diffMs = now - past;
+
+  const sec = Math.floor(diffMs / 1000);
+  const min = Math.floor(sec / 60);
+  const hr  = Math.floor(min / 60);
+  const day = Math.floor(hr / 24);
+  const week = Math.floor(day / 7);
+  const month = Math.floor(day / 30);
+  const year = Math.floor(day / 365);
+
+  if (day < 1) {
+    if (min < 1) return "just now";
+    if (min < 60) return `${min}m`;
+    return `${hr}h`;
+  }
+
+  if (day < 7) {
+    return `${day}d`;
+  }
+
+  if (day < 30) {
+    return `${week}w`;
+  }
+
+  if (day < 365) {
+    return `${month}mo`;
+  }
+
+  return `${year}y`;
+}
+
+
+
+
+
+
+
+

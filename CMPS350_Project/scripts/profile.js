@@ -24,6 +24,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
   const viewingUserId = urlParams.get("userId");
 
+
+
+
   let profileUser;
 
   if (viewingUserId) {
@@ -77,12 +80,14 @@ function displayProfile(profileUser, currentUser) {
   displayUserPosts(userPosts, "image");
   setupPostTabs(userPosts);
   const logoutbtn = document.querySelector(".logout-btn");
+
   logoutbtn.onclick = function () {
-    if (confirm("Are you sure you want to log out of this account?")) {
-      localStorage.removeItem("currentUser");
-      window.location.href = "login.html";
-    }
-  };
+  if (confirm("Are you sure you want to log out of this account?")) {
+    localStorage.removeItem("currentUser");
+    window.location.href = "login.html";
+  }
+};
+
 }
 
 function toggleFollow(userId, currentUser) {
