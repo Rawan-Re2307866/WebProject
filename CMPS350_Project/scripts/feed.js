@@ -29,22 +29,24 @@ function loadFeed() {
   const users = getUsers();
   const allPosts = getPosts();
 
-const followingPosts = allPosts.filter((post) =>
+  const followingPosts = allPosts.filter((post) =>
     currentUser.following.includes(post.userId) && post.userId !== currentUser.id
-);
+  );
 
-  const shuffledPosts = shuffleArray(followingPosts);
+  const chronologicalPosts = [...followingPosts].sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  );
 
   const postContainer = document.querySelector(".post-container");
   postContainer.innerHTML = "";
 
-  if (shuffledPosts.length === 0) {
+  if (chronologicalPosts.length === 0) {
     postContainer.innerHTML =
       '<p style="text-align: center; color: #999; padding: 2rem;">No posts from users you follow. Start following people to see their posts!</p>';
     return;
   }
 
-  shuffledPosts.forEach((post) => {
+  chronologicalPosts.forEach((post) => {
     const poster = users.find((u) => u.id === post.userId);
     if (!poster) return;
 
@@ -75,13 +77,13 @@ function createPostElement(post, poster) {
     `;
 
 
-const postContent = document.createElement("div");
-postContent.className = "post-content";
-if (post.type === "image") {
+  const postContent = document.createElement("div");
+  postContent.className = "post-content";
+  if (post.type === "image") {
     postContent.innerHTML = `<img src="${post.content}" alt="Post image" style="width: 100%; object-fit: cover;">`;
-} else {
+  } else {
     postContent.innerHTML = `<p>${post.content}</p>`;
-}
+  }
 
   const postActions = document.createElement("div");
   postActions.className = "post-actions";
@@ -121,22 +123,7 @@ if (post.type === "image") {
   return article;
 }
 
-// function attachLikeListeners() {
-//   const likeButtons = document.querySelectorAll(".like-btn");
 
-//   likeButtons.forEach((button) => {
-//     const likeCount = button.nextElementSibling;
-//     button.addEventListener("click", () => {
-//       button.classList.toggle("liked");
-//       let count = parseInt(likeCount.textContent);
-//       if (button.classList.contains("liked")) {
-//         likeCount.textContent = count + 1;
-//       } else {
-//         likeCount.textContent = count - 1;
-//       }
-//     });
-//   });
-// }
 function attachLikeListeners() {
   const currentUser = getCurrentUser();
   const allPosts = getPosts();
@@ -179,16 +166,6 @@ function attachLikeListeners() {
   });
 }
 
-function shuffleArray(array) {
-  const shuffled = [...array];
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled;
-}
-
-
 function timeAgo(isoString) {
   const now = new Date();
   const past = new Date(isoString);
@@ -196,7 +173,7 @@ function timeAgo(isoString) {
 
   const sec = Math.floor(diffMs / 1000);
   const min = Math.floor(sec / 60);
-  const hr  = Math.floor(min / 60);
+  const hr = Math.floor(min / 60);
   const day = Math.floor(hr / 24);
   const week = Math.floor(day / 7);
   const month = Math.floor(day / 30);
