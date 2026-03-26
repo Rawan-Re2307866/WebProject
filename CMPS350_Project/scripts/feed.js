@@ -85,6 +85,11 @@ function createPostElement(post, poster) {
     postContent.innerHTML = `<p>${post.content}</p>`;
   }
 
+  postContent.style.cursor = "pointer";
+  postContent.addEventListener("click", () => {
+    window.location.href = `post.html?postId=${post.postId}`;
+  });
+
   const postActions = document.createElement("div");
   postActions.className = "post-actions";
   postActions.innerHTML = `
