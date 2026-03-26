@@ -35,6 +35,7 @@ posterLinks.forEach((link) => {
   link.href = `profile.html?userId=${poster.id}`;
 })
 
+const postPage = document.querySelector(".post-page")
 const profilePic = document.querySelector(".profile-pic");
 const username = document.querySelector(".username");
 const content = document.querySelector(".content");
@@ -42,6 +43,7 @@ const likeBtn = document.querySelector(".like-btn");
 const likeCount = document.querySelector(".like-count");
 const captionUser = document.querySelector(".caption-user");
 const captionText = document.querySelector(".caption-text");
+const commentsPart = document.querySelector(".comments-part")
 
 username.textContent = poster.username
 profilePic.src = poster.profilePicture
@@ -83,7 +85,16 @@ likeBtn.addEventListener("click", () => {
   updatePost(post);
 });
 
-content.classList.add("post")
+if (post.type === "text") {
+  content.classList.add("post-text")
+  postPage.classList.add("text")
+  commentsPart.classList.add("text")
+  content.classList.remove("post")
+}
+else if (post.type === "image") {
+  content.classList.add("post")
+  content.classList.remove("post-text")
+}
 
 
   const commentsContainer = document.querySelector(".other-comments")
