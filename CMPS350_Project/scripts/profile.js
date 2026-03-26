@@ -64,31 +64,34 @@ function displayProfile(profileUser, currentUser) {
   ).length;
 
   const actionButton = document.querySelector(".edit-btn");
+  const headerLogoutBtn = document.querySelector(".header-logout-btn");
 
   if (profileUser.id === currentUser.id) {
     actionButton.textContent = "Edit Profile";
     actionButton.onclick = function () {
       window.location.href = "edit.html";
     };
+    if (headerLogoutBtn) {
+      headerLogoutBtn.style.display = "flex";
+      headerLogoutBtn.onclick = function () {
+        if (confirm("Are you sure you want to log out of this account?")) {
+          localStorage.removeItem("currentUser");
+          window.location.href = "login.html";
+        }
+      };
+    }
   } else {
     const isFollowing = currentUser.following.includes(profileUser.id);
     actionButton.textContent = isFollowing ? "Unfollow" : "Follow";
     actionButton.onclick = function () {
       toggleFollow(profileUser.id, currentUser);
     };
+    if (headerLogoutBtn) headerLogoutBtn.style.display = "none";
   }
   displayUserPosts(userPosts, "image");
   setupPostTabs(userPosts);
-  
-  const logoutbtn = document.querySelector(".logout-btn");
-  logoutbtn.onclick = function () {
-  if (confirm("Are you sure you want to log out of this account?")) {
-    localStorage.removeItem("currentUser");
-    window.location.href = "login.html";
-  }
-};
-  
- 
+
+
 
 }
 
