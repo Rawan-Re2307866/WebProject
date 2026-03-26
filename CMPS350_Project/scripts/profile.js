@@ -79,14 +79,16 @@ function displayProfile(profileUser, currentUser) {
   }
   displayUserPosts(userPosts, "image");
   setupPostTabs(userPosts);
+  
   const logoutbtn = document.querySelector(".logout-btn");
-
   logoutbtn.onclick = function () {
   if (confirm("Are you sure you want to log out of this account?")) {
     localStorage.removeItem("currentUser");
     window.location.href = "login.html";
   }
 };
+  
+ 
 
 }
 
