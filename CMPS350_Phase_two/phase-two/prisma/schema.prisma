@@ -1,0 +1,76 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "client"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+model Follow{
+  id String @id @default(cuid(2))
+  followerId String
+  followingId String
+  follower User @relation("follower", fields: [followerId],references: [id])
+  following User @relation("following", fields: [followingId],references: [id])
+
+  @@unique([followerId,followingId])
+}
+model User {
+  id String @id @default(cuid(2))
+  username String @unique
+  email String @unique
+  password String
+  bio String?
+  profilePicture String @default("images/prof1.png")
+  createdAt DateTime @default(now())
+  posts Post[]
+  comments Comment[]
+  likes Like[]
+  followers Follow[] @relation("following")   //to get the followers u check fileds where followingId was this user's meaning he was the one being followed
+  following Follow[] @relation("follower")    // to get the following list of this user check the fields where the followerId was his, meaning he did the following
+}
+model Post{
+  id String @id @default(cuid(2))
+  type String   //image or text
+  content String
+  caption String?
+  createdAt DateTime @default(now())
+  userId String
+  user User @relation(fields: [userId], references: [id])
+  comments Comment[]
+  likes Like[]
+}
+
+model Comment {
+  id String @id @default(cuid(2))
+  content String
+  createdAt DateTime @default(now())
+  userId String
+  user User @relation(fields: [userId], references: [id])
+  postId String
+  post Post @relation(fields: [postId],references: [id])
+}
+
+model Like{
+  id String @id @default(cuid(2))
+  userId String
+  user User @relation(fields: [userId],references: [id])
+  postId String
+  post Post @relation(fields: [postId], references: [id])
+
+  @@unique([userId, postId])  //user can like a post only ONCE
+}
+
+
+
+//follow model represents an action
+// its like a join command
+//follow is the action being done
+//followerID is the person who clicked the follow button "the fan"
+//followingID is the ID of the user he followed
+
