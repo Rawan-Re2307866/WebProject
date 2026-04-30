@@ -18,7 +18,7 @@ const seed = async () => {
         email: faker.internet.email(),
         password: "Password1!",
         bio: faker.lorem.sentence(),
-        profilePicture: "images/prof1.png",
+        profilePicture: "/images/prof1.png",
         createdAt: faker.date.between({ from: "2024-01-01", to: new Date() }),
       },
     });
