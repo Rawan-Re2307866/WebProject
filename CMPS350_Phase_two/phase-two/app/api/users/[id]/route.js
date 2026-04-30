@@ -4,7 +4,7 @@ import { read, update, remove } from "@/repos/users";
 import bcrypt from "bcrypt";
 
 
-export async function GET(request, { params }) {
+export async function GET({ params }) {
     const { id } = params;
     const user = await read(id);
     if (!user) {
@@ -37,7 +37,7 @@ export async function PATCH(request, { params }) {
 }
 
 
-export async function DELETE(request, { params }) {
+export async function DELETE({ params }) {
     const { id } = params;
     const session = getSession();
     if (!session) {
