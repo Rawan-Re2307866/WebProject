@@ -1,0 +1,33 @@
+import { NextResponse } from "next/server";
+import { readByUsername } from "@/repos/users";
+import { cookies } from "next/headers";
+import bcrypt from "bcrypt";
+
+export async function POST(request) {
+    const body = await request.json();
+    const { username, password } = body;
+    if (!username || !password) {
+        return NextResponse.json(
+            { error: "Username and password are required" },
+            { status: 400 }
+        );
+    }
+    const user = await readByUsername(username);
+    if (!user) {
+        return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
+    }
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordValid) {
+        return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
+    }
+    cookies().set("userId", user.id.toString(), {
+        httpOnly: true,
+        maxAge: 24 * 60 * 60
+    });
+
+    const { password: _, ...userWithoutPassword } = user;
+    return NextResponse.json({
+        user: userWithoutPassword
+    });
+}
