@@ -12,7 +12,7 @@ export default function Search() {
   const [open, setOpen] = useState(false);
   const wrapperRef = useRef(null);
 
-  // Debounced fetch
+
   useEffect(() => {
     if (!query.trim()) {
       setResults([]);
