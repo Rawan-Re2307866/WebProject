@@ -40,23 +40,25 @@ const seed = async () => {
       });
     }
   }
-
-  const posts = [];
-  for (const user of users) {
-    const count = faker.number.int({ min: 2, max: 8 });
-    for (let i = 0; i < count; i++) {
-      const post = await prisma.post.create({
-        data: {
-          type: faker.helpers.arrayElement(["text", "image"]),
-          content: faker.lorem.paragraph(),
-          caption: faker.lorem.sentence(),
-          userId: user.id,
-          createdAt: faker.date.between({ from: "2024-06-01", to: new Date() }),
-        },
-      });
-      posts.push(post);
-    }
+const posts = [];
+for (const user of users) {
+  const count = faker.number.int({ min: 2, max: 8 });
+  for (let i = 0; i < count; i++) {
+    const type = faker.helpers.arrayElement(["text", "image"]);
+    const post = await prisma.post.create({
+      data: {
+        type,
+        content: type === "image"
+          ? `https://picsum.photos/seed/${faker.string.alphanumeric(8)}/600/600`
+          : faker.lorem.paragraph(),
+        caption: faker.lorem.sentence(),
+        userId: user.id,
+        createdAt: faker.date.between({ from: "2024-06-01", to: new Date() }),
+      },
+    });
+    posts.push(post);
   }
+}
 
   for (const user of users) {
     const toLike = faker.helpers.arrayElements(posts, { min: 3, max: 10 });

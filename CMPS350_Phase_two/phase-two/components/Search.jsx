@@ -1,16 +1,18 @@
 "use client";
-import { usePathname } from "next/navigation";
+
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 export default function Search() {
   const pathname = usePathname();
-  if (pathname === "/stats") return null;
+
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [open, setOpen] = useState(false);
   const wrapperRef = useRef(null);
 
+  // Debounced fetch
   useEffect(() => {
     if (!query.trim()) {
       setResults([]);
@@ -19,7 +21,7 @@ export default function Search() {
     }
 
     const timer = setTimeout(async () => {
-      const res = await fetch(`/api/users/search?q=${encodeURIComponent(query)}`);
+      const res = await fetch(`/api/users?q=${encodeURIComponent(query)}`);
       const data = await res.json();
       setResults(data.data || data || []);
       setOpen(true);
@@ -28,6 +30,7 @@ export default function Search() {
     return () => clearTimeout(timer);
   }, [query]);
 
+  // Close on outside click
   useEffect(() => {
     function handleClick(e) {
       if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
@@ -38,6 +41,9 @@ export default function Search() {
     document.addEventListener("click", handleClick);
     return () => document.removeEventListener("click", handleClick);
   }, []);
+
+  // Early return AFTER all hooks have been called
+  if (pathname === "/stats") return null;
 
   return (
     <div className="search-wrapper" ref={wrapperRef}>
@@ -51,13 +57,7 @@ export default function Search() {
       />
       <div className={`search-results ${open ? "open" : ""}`}>
         {results.length === 0 && query.trim() ? (
-          <p
-            style={{
-              padding: "0.7rem 1rem",
-              color: "#999",
-              fontSize: "0.85rem",
-            }}
-          >
+          <p style={{ padding: "0.7rem 1rem", color: "#999", fontSize: "0.85rem" }}>
             No users found
           </p>
         ) : (
