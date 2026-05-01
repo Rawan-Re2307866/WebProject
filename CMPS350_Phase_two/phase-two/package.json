@@ -13,12 +13,15 @@
     "@prisma/adapter-libsql": "^7.8.0",
     "@prisma/client": "^7.8.0",
     "@prisma/client-runtime-utils": "^7.8.0",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.3",
     "lucide": "^1.14.0",
     "next": "16.2.4",
     "react": "^19.2.5"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
+    "@types/bcrypt": "^6.0.0",
     "babel-plugin-react-compiler": "1.0.0",
     "dotenv": "^17.4.2",
     "prisma": "^7.8.0"

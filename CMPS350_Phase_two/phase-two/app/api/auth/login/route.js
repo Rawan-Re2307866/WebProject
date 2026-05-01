@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import { readByUsername } from "@/repos/users";
 import { cookies } from "next/headers";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 export async function POST(request) {
     const body = await request.json();
     const username = body.username?.trim();
-    const password = body.password;
+    const password = body.password.trim();
 
     if (!username || !password) {
         return NextResponse.json(
@@ -32,10 +32,11 @@ export async function POST(request) {
             { status: 401 }
         );
     }
-    cookies().set("userId", user.id, {
-        httpOnly: true,
-        maxAge: 24 * 60 * 60
-    });
+    const cookieStore = await cookies();
+    cookieStore.set("userId", user.id, {
+    httpOnly: true,
+    maxAge: 24 * 60 * 60
+});
     const { password: _, ...userWithoutPassword } = user;
     return NextResponse.json(userWithoutPassword);
 }

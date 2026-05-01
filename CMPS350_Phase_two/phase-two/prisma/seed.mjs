@@ -2,6 +2,9 @@ import "dotenv/config";
 import { PrismaLibSql } from "@prisma/adapter-libsql";
 import { PrismaClient } from "./client/index.js";
 import { faker } from "@faker-js/faker";
+import bcrypt from "bcryptjs";
+
+const hashedPassword = await bcrypt.hash("Password1!", 10);
 
 const prisma = new PrismaClient({
   adapter: new PrismaLibSql({
@@ -11,12 +14,13 @@ const prisma = new PrismaClient({
 
 const seed = async () => {
   const users = [];
+    
   for (let i = 0; i < 10; i++) {
     const user = await prisma.user.create({
       data: {
         username: faker.internet.username().slice(0, 20).replace(/[^a-zA-Z0-9_]/g, "_"),
         email: faker.internet.email(),
-        password: "Password1!",
+        password: hashedPassword,
         bio: faker.lorem.sentence(),
         profilePicture: "/images/prof1.png",
         createdAt: faker.date.between({ from: "2024-01-01", to: new Date() }),

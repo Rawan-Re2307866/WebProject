@@ -4,11 +4,8 @@ import Feed from "@/components/Feed";
 
 export default async function FeedPage() {
     const session = await getSession();
+    if (!session) redirect("/login");
 
-    if (!session) {
-        redirect("/login");
-    }
-    
     return (
         <main className="feed">
             <section className="post-container">
