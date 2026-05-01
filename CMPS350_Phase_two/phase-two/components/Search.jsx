@@ -19,7 +19,7 @@ export default function Search() {
     }
 
     const timer = setTimeout(async () => {
-      const res = await fetch(`/api/users?q=${encodeURIComponent(query)}`);
+      const res = await fetch(`/api/users/search?q=${encodeURIComponent(query)}`);
       const data = await res.json();
       setResults(data.data || data || []);
       setOpen(true);
