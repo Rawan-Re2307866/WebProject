@@ -63,12 +63,12 @@ export async function readFeed(userId){
 }
 export async function read(id){
     try{
-        const data = prisma.post.findUnique({
+        const data = await prisma.post.findUnique({
             where: {id},
             include: {
                 user:true,
                 likes:true,
-                comments: {include: {user}},
+                comments: {include: {user:true}},
             },
         });
         if(!data) {
@@ -78,6 +78,7 @@ export async function read(id){
                 }
             };
         };
+        return {data};
 
     }catch(e){
         return {
@@ -140,7 +141,7 @@ export async function remove(id){
         const result = await prisma.post.delete({
             where: {id},
         });
-        return {data};
+        return {data:result};
 
     }catch(e){
         return {
@@ -152,15 +153,3 @@ export async function remove(id){
     }
 
 }
-/*
-    try{
-
-    }catch(e){
-        return {
-            error: {
-                message: e.message,
-                status: 500
-            }
-        };
-    }
-*/
