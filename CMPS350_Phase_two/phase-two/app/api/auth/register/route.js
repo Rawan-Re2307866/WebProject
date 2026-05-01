@@ -1,35 +1,39 @@
 import { NextResponse } from "next/server";
 import { create, readByUsername } from "@/repos/users";
-import { cookies } from "next/headers";
 import bcrypt from "bcrypt";
 
 export async function POST(request) {
   const body = await request.json();
-  const { email, password, username, name } = body;
-  if (!email || !password || !username || !name) {
+
+  const { username, email, password, bio, profilePicture } = body;
+
+  if (!username || !email || !password) {
     return NextResponse.json(
-      { error: "All fields are required" },
+      { error: "Username, email and password are required" },
       { status: 400 }
     );
   }
   const existingUser = await readByUsername(username);
-  if (existingUser) {
-    return NextResponse.json({ error: "Username already exists" }, { status: 400 });
+  if (existingUser.data) {
+    return NextResponse.json(
+      { error: "Username already exists" },
+      { status: 400 }
+    );
   }
-
   const hashedPassword = await bcrypt.hash(password, 10);
-
-  const user = await create({
+  const result = await create({
+    username,
     email,
     password: hashedPassword,
-    username,
-    name
+    bio: bio || null,
+    profilePicture: profilePicture || undefined
   });
-  
-  cookies().set("userId", user.id.toString(), {
-    httpOnly: true,
-    maxAge: 24 * 60 * 60
-  });
-
-  return NextResponse.json(user, { status: 201 });
+  if (result.error) {
+    return NextResponse.json(result.error, {
+      status: result.error.status || 500
+    });
+  }
+  const user = result.data;
+  const { password: _, ...userWithoutPassword } = user;
+  return NextResponse.json(userWithoutPassword, { status: 201 });
 }

@@ -5,29 +5,37 @@ import bcrypt from "bcrypt";
 
 export async function POST(request) {
     const body = await request.json();
-    const { username, password } = body;
+    const username = body.username?.trim();
+    const password = body.password;
+
     if (!username || !password) {
         return NextResponse.json(
             { error: "Username and password are required" },
             { status: 400 }
         );
     }
-    const user = await readByUsername(username);
-    if (!user) {
-        return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
+    
+    const result = await readByUsername(username);
+    if (result.error) {
+        return NextResponse.json(
+            { error: "Invalid credentials" },
+            { status: 401 }
+        );
     }
+
+    const user = result.data;
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
-        return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
+        return NextResponse.json(
+            { error: "Invalid credentials" },
+            { status: 401 }
+        );
     }
-    cookies().set("userId", user.id.toString(), {
+    cookies().set("userId", user.id, {
         httpOnly: true,
         maxAge: 24 * 60 * 60
     });
-
     const { password: _, ...userWithoutPassword } = user;
-    return NextResponse.json({
-        user: userWithoutPassword
-    });
+    return NextResponse.json(userWithoutPassword);
 }

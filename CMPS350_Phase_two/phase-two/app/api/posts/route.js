@@ -15,9 +15,18 @@ export async function POST(request) {
         return NextResponse.json({ error: "Not logged in" }, { status: 401 });
     }
     const body = await request.json();
+
+    if (!body.content || !body.type) {
+        return NextResponse.json(
+            { error: "Content and type are required" },
+            { status: 400 }
+        );
+    }
     const post = await create({
-        ...body,
-        userId: Number(session.userId)
+        type: body.type,
+        content: body.content,
+        caption: body.caption || null,
+        userId: session.userId
     });
     return NextResponse.json(post, { status: 201 });
 }
