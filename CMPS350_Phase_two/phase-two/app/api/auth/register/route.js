@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { create, readByUsername } from "@/repos/users";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 export async function POST(request) {
   const body = await request.json();
