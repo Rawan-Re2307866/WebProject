@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { create, readByUsername } from "@/repos/users";
 import bcrypt from "bcryptjs";
+import { cookies } from "next/headers";
 
 export async function POST(request) {
   const body = await request.json();
@@ -31,6 +32,12 @@ export async function POST(request) {
       status: result.error.status || 500
     });
   }
+  const cookieStore = await cookies();
+  cookieStore.set("userId", result.data.id, {
+    httpOnly: true,
+    maxAge: 24 * 60 * 60
+  });
+
   const user = result.data;
   const { password: _, ...userWithoutPassword } = user;
   return NextResponse.json(userWithoutPassword, { status: 201 });
