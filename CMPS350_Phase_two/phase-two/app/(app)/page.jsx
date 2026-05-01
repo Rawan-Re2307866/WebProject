@@ -9,7 +9,7 @@ export default async function FeedPage() {
     return (
         <main className="feed">
             <section className="post-container">
-                <Feed />
+                <Feed currentUserId={session.userId}/>
             </section>
         </main>
     );

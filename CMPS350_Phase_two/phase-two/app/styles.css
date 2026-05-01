@@ -1685,56 +1685,53 @@
     height: 40vh;
   }
   
-  .text-image-content img {
-    margin: 0;
-    max-width: 50%;
-    max-height: 220px;
-    border-radius: 10%;
-    border: 3px solid var(--color-border);
-  }
-  
-  #media-content {
-    padding: 0.45rem 0.7rem;
-    opacity: 0;
-    pointer-events: none;
-    width: 0;
-    height: 0;
-  }
-  
   #text-content {
     padding: 0.9rem 0.7rem;
-    border: 3px solid var(--color-border);
-    border-radius: 16px;
+    border: 2px dashed var(--color-border);
+    border-radius: 12px;
     background: var(--color-bg-main);
     color: var(--color-text-dark);
-    transition:
-      border-color 0.25s,
-      box-shadow 0.25s,
-      transform 0.25s;
+    transition: border-color 0.25s, box-shadow 0.25s;
     width: 90%;
+    height: 180px;
+    margin: 0.5rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    resize: none;
+    vertical-align: top;   
+    white-space: pre-wrap; 
+    word-wrap: break-word; 
   }
   
   #text-content:focus {
+    outline: none;
     border-color: var(--color-accent);
-    box-shadow: 0 0 0 3px rgba(84, 92, 161, 0.12);
-    transform: translateY(-1px);
+    box-shadow: 0 0 0 3px rgba(84, 92, 161, 0.1);
   }
-  
-  .text-image-content input {
-    margin: 0.5rem;
-    width: 100%;
-    opacity: 0;
-    pointer-events: none;
-    box-sizing: border-box;
-  }
-  
-  .text-image-content.media input[type="file"],
-  .text-image-content.text input[type="text"] {
-    opacity: 1;
-    pointer-events: auto;
-  }
-  
-  
+
+.image-upload-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 180px;
+  border: 2px dashed var(--color-border);
+  border-radius: 12px;
+  background: var(--color-bg-main);
+  cursor: pointer;
+  margin: 0.5rem;
+  overflow: hidden;
+  position: relative; 
+}
+
+.image-preview { 
+  position: absolute;  
+  top: 0;             
+  left: 0;             
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+}
   
   /* Post Type */
   .post-type-selection-bar {

@@ -22,7 +22,7 @@ export default function Feed({ currentUserId }) {
 
   async function toggleLike(postId) {
     try {
-      const res = await fetch(`/api/posts/${postId}/likes`, { method: 'POST' });
+      const res = await fetch(`/api/posts/${postId}/like`, { method: 'POST' });
       const { liked } = await res.json();
 
       setPosts((prev) =>

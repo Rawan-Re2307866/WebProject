@@ -15,7 +15,7 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
-    const session = getSession();
+    const session = await getSession();
     if (!session) {
         return NextResponse.json(
             { error: "Not logged in" },

@@ -3,7 +3,7 @@ import { readFeed } from "@/repos/posts";
 import { getSession } from "@/lib/session";
 
 export async function GET(request) {
-  const session = getSession();
+  const session = await getSession();
   if (!session) {
     return NextResponse.json(
       { error: "Not logged in" },
