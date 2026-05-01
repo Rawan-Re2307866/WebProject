@@ -60,4 +60,16 @@ export async function remove(id) {
   } catch (e) {
     return { error: { message: e.message, status: 500 } };
   }
+}export async function search(query) {
+  try {
+    const data = await prisma.user.findMany({
+      where: {
+        username: { contains: query },
+      },
+      take: 10,
+    });
+    return { data };
+  } catch (e) {
+    return { error: { message: e.message, status: 500 } };
+  }
 }
