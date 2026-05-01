@@ -1,13 +1,13 @@
 import prisma from "@/repos/prisma";
 
-export async function create(data){
-    try{
+export async function create(data) {
+    try {
         const result = await prisma.comment.create({
             data,
-            include: {user:true},
+            include: { user: true },
         });
-        return {data:result};
-    }catch(e){
+        return { data: result };
+    } catch (e) {
         return {
             error: {
                 message: e.message,
@@ -18,13 +18,13 @@ export async function create(data){
 
 }
 
-export async function remove(id){
-    try{
+export async function remove(id) {
+    try {
         return await prisma.comment.delete({
-            where: {id},
+            where: { id },
         });
 
-    }catch(e){
+    } catch (e) {
         return {
             error: {
                 message: e.message,
@@ -33,6 +33,32 @@ export async function remove(id){
         };
     }
 
+}
+
+export async function read(id) {
+    try {
+        const data = await prisma.comment.findUnique({
+            where: { id },
+            include: { user: true }
+        });
+        if (!data) {
+            return {
+                error: {
+                    message: "Comment not found",
+                    status: 404
+                }
+            };
+        }
+        return { data };
+
+    } catch (e) {
+        return {
+            error: {
+                message: e.message,
+                status: 500
+            }
+        };
+    }
 }
 
 

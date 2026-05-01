@@ -1,33 +1,68 @@
 import { NextResponse } from "next/server";
 import { getSession } from "@/lib/session";
-import { create, remove } from "@/repos/comments";
+import { create, remove, read } from "@/repos/comments";
 
 export async function POST(request, { params }) {
     const session = getSession();
+
     if (!session) {
-        return NextResponse.json({ error: "Not logged in" }, { status: 401 });
+        return NextResponse.json(
+            { error: "Not logged in" },
+            { status: 401 }
+        );
     }
+
     const body = await request.json();
-    const comment = await create({
-        content: body.content,
+
+    if (!body.content || !body.content.trim()) {
+        return NextResponse.json(
+            { error: "Comment content is required" },
+            { status: 400 }
+        );
+    }
+
+    const result = await create({
+        content: body.content.trim(),
         postId: params.id,
         userId: session.userId
     });
-    return NextResponse.json(comment, { status: 201 });
+
+    if (result.error) {
+        return NextResponse.json(result.error, {
+            status: result.error.status || 500
+        });
+    }
+
+    return NextResponse.json(result.data, { status: 201 });
 }
 
 
 export async function DELETE(request, { params }) {
     const session = getSession();
     if (!session) {
-        return NextResponse.json({ error: "Not logged in" }, { status: 401 });
+        return NextResponse.json(
+            { error: "Not logged in" },
+            { status: 401 }
+        );
     }
-    if (!comment) {
-        return NextResponse.json({ error: "Comment not found" }, { status: 404 });
+    const result = await read(params.id);
+    if (result.error) {
+        return NextResponse.json(result.error, {
+            status: result.error.status || 500
+        });
     }
+    const comment = result.data;
     if (comment.userId !== session.userId) {
-        return NextResponse.json({ error: "Not authorized" }, { status: 403 });
+        return NextResponse.json(
+            { error: "Not authorized" },
+            { status: 403 }
+        );
     }
-    await remove(params.id);
+    const deleteResult = await remove(params.id);
+    if (deleteResult.error) {
+        return NextResponse.json(deleteResult.error, {
+            status: deleteResult.error.status || 500
+        });
+    }
     return NextResponse.json({ message: "Comment deleted" });
 }

@@ -2,48 +2,91 @@ import { NextResponse } from "next/server";
 import { getSession } from "@/lib/session";
 import { read, update, remove } from "@/repos/posts";
 
-
 export async function GET(request, { params }) {
   const { id } = params;
-  const post = await read(id);
-  if (!post) {
-    return NextResponse.json({ error: "Post not found" }, { status: 404 });
+  const result = await read(id);
+  if (result.error) {
+    return NextResponse.json(result.error, {
+      status: result.error.status || 500
+    });
   }
-  return NextResponse.json(post);
+  return NextResponse.json(result.data);
 }
 
 export async function PATCH(request, { params }) {
   const { id } = params;
   const session = getSession();
-  if (!session) {
-    return NextResponse.json({ error: "Not logged in" }, { status: 401 });
-  }
-  const post = await read(id);
-  if (!post) {
-    return NextResponse.json({ error: "Post not found" }, { status: 404 });
-  }
-  if (post.userId !== session.userId) {
-    return NextResponse.json({ error: "Not authorized" }, { status: 403 });
-  }
-  const body = await request.json();
-  const updated = await update(id, body);
-  return NextResponse.json(updated);
-}
 
+  if (!session) {
+    return NextResponse.json(
+      { error: "Not logged in" },
+      { status: 401 }
+    );
+  }
+
+  const result = await read(id);
+
+  if (result.error) {
+    return NextResponse.json(result.error, {
+      status: result.error.status || 500
+    });
+  }
+
+  const post = result.data;
+
+  if (post.userId !== session.userId) {
+    return NextResponse.json(
+      { error: "Not authorized" },
+      { status: 403 }
+    );
+  }
+
+  const body = await request.json();
+  const updateResult = await update(id, body);
+
+  if (updateResult.error) {
+    return NextResponse.json(updateResult.error, {
+      status: updateResult.error.status || 500
+    });
+  }
+  return NextResponse.json(updateResult.data);
+}
 
 export async function DELETE(request, { params }) {
   const { id } = params;
   const session = getSession();
+
   if (!session) {
-    return NextResponse.json({ error: "Not logged in" }, { status: 401 });
+    return NextResponse.json(
+      { error: "Not logged in" },
+      { status: 401 }
+    );
   }
-  const post = await read(id);
-  if (!post) {
-    return NextResponse.json({ error: "Post not found" }, { status: 404 });
+
+  const result = await read(id);
+
+  if (result.error) {
+    return NextResponse.json(result.error, {
+      status: result.error.status || 500
+    });
   }
+
+  const post = result.data;
+
   if (post.userId !== session.userId) {
-    return NextResponse.json({ error: "Not authorized" }, { status: 403 });
+    return NextResponse.json(
+      { error: "Not authorized" },
+      { status: 403 }
+    );
   }
-  await remove(id);
+
+  const deleteResult = await remove(id);
+
+  if (deleteResult.error) {
+    return NextResponse.json(deleteResult.error, {
+      status: deleteResult.error.status || 500
+    });
+  }
+
   return NextResponse.json({ message: "Post deleted" });
 }

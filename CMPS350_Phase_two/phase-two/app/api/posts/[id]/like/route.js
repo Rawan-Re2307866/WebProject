@@ -10,9 +10,17 @@ export async function POST(request, { params }) {
             { status: 401 }
         );
     }
-    const postId = params.id;       
-    const userId = session.userId; 
+    const postId = params.id;
+    const userId = session.userId;
     const result = await toggle(userId, postId);
 
-    return NextResponse.json(result);
+    if (result.error) {
+        return NextResponse.json(result.error, {
+            status: result.error.status || 500
+        });
+    }
+
+    return NextResponse.json({
+        liked: result.liked
+    });
 }
