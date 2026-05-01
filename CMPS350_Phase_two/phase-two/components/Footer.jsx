@@ -13,14 +13,7 @@ export default async function Footer({ currentUserId }) {
                 </svg>
             </Link>
 
-            <Link href="/stats" className="nav-item" aria-label="Statistics">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M3 3v18h18" />
-                    <path d="M7 16l4 -4l4 4l5 -5" />
-                </svg>
-            </Link>
+            
 
             <Link href="/create-post" className="nav-item add" aria-label="Create post">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="white" strokeWidth="2"
@@ -37,6 +30,14 @@ export default async function Footer({ currentUserId }) {
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
                     <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                </svg>
+            </Link>
+            <Link href="/stats" className="nav-item" aria-label="Statistics">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M3 3v18h18" />
+                    <path d="M7 16l4 -4l4 4l5 -5" />
                 </svg>
             </Link>
         </footer>
