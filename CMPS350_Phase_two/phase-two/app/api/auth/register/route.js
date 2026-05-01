@@ -4,9 +4,7 @@ import bcrypt from "bcrypt";
 
 export async function POST(request) {
   const body = await request.json();
-
   const { username, email, password, bio, profilePicture } = body;
-
   if (!username || !email || !password) {
     return NextResponse.json(
       { error: "Username, email and password are required" },
