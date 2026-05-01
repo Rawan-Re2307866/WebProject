@@ -1,5 +1,6 @@
 import prisma from "@/repos/prisma";
 
+
 export async function read(id) {
   try {
     if (id) {
@@ -34,7 +35,9 @@ export async function readByUsername(username) {
 
 export async function create(data) {
   try {
+    
     const result = await prisma.user.create({ data });
+
     return { data: result };
   } catch (e) {
     if (e.code === "P2002") {
