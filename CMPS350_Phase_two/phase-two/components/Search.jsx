@@ -12,7 +12,7 @@ export default function Search() {
   const [open, setOpen] = useState(false);
   const wrapperRef = useRef(null);
 
-  // Debounced fetch
+
   useEffect(() => {
     if (!query.trim()) {
       setResults([]);
@@ -21,14 +21,10 @@ export default function Search() {
     }
 
     const timer = setTimeout(async () => {
-      try {
-        const res = await fetch(`/api/users?q=${encodeURIComponent(query)}`);
-        const data = await res.json();
-        setResults(data.data || data || []);
-        setOpen(true);
-      } catch (e) {
-        console.error("Search failed", e);
-      }
+      const res = await fetch(`/api/users/search?q=${encodeURIComponent(query)}`);
+      const data = await res.json();
+      setResults(data.data || data || []);
+      setOpen(true);
     }, 200);
 
     return () => clearTimeout(timer);

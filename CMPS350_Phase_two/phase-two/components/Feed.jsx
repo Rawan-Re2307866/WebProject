@@ -11,7 +11,6 @@ export default function Feed({ currentUserId }) {
     fetch('/api/feed')
       .then((r) => r.json())
       .then((res) => {
-        // your readFeed returns { data: [...] }
         setPosts(res.data || res || []);
         setLoading(false);
       })
