@@ -140,7 +140,7 @@ export async function remove(id){
         const result = await prisma.post.delete({
             where: {id},
         });
-        return {data};
+        return {data:result};
 
     }catch(e){
         return {
@@ -152,15 +152,3 @@ export async function remove(id){
     }
 
 }
-/*
-    try{
-
-    }catch(e){
-        return {
-            error: {
-                message: e.message,
-                status: 500
-            }
-        };
-    }
-*/
