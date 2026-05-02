@@ -1,7 +1,7 @@
 'use client';
 import {useRouter} from "next/navigation";
 import { useState } from "react";
-
+import { useEffect, useRef } from "react";
 
 
 export default function Settings() {
@@ -9,6 +9,19 @@ export default function Settings() {
     const router = useRouter();
     const [open, setOpen] = useState(false);
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+
+const ref = useRef();
+
+useEffect(() => {
+  function handleClickOutside(e) {
+    if (ref.current && !ref.current.contains(e.target)) {
+      setOpen(false);
+    }
+  }
+
+  document.addEventListener("mousedown", handleClickOutside);
+  return () => document.removeEventListener("mousedown", handleClickOutside);
+}, []);
 
     async function handleLogout() {
         await fetch('/api/auth/logout', {
