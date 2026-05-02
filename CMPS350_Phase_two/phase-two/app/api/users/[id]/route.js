@@ -23,7 +23,7 @@ export async function GET(request, { params }) {
 
 export async function PATCH(request, { params }) {
   const { id } = await params;
-  const session = getSession();
+  const session = await getSession();
   
   if (!session) {
     return NextResponse.json(
