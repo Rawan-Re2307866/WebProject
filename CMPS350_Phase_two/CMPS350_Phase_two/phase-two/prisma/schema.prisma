@@ -5,11 +5,12 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "client"
+
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
+
 }
 model Follow{
   id String @id @default(cuid(2))

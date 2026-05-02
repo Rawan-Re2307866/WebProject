@@ -1,9 +1,15 @@
-import { PrismaLibSql } from "@prisma/adapter-libsql";
-import { PrismaClient } from "../prisma/client/index.js";
+import { PrismaClient } from "@prisma/client";
 
-export default new PrismaClient({
-  adapter: new PrismaLibSql({
-    url: process.env.DATABASE_URL ?? "",
-  }),
-  log: ["query"],
-});
+const globalForPrisma = globalThis;
+
+export const prisma =
+  globalForPrisma.prisma ||
+  new PrismaClient({
+    log: ["query"], // optional (for debugging)
+  });
+
+if (process.env.NODE_ENV !== "production") {
+  globalForPrisma.prisma = prisma;
+}
+
+export default prisma;
