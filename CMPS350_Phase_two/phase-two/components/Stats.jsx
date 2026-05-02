@@ -85,37 +85,37 @@ export default function Stats() {
   if (error) return <div className="stats-error">Error: {error}</div>;
 
   return (
-    <div className="stats-grid">
-      <NumberCard label="Avg Followers / User" value={stats.avgFollowers} icon={Icons.followers} iconBg="stat-icon-blue" />
-      <NumberCard label="Avg Following / User" value={stats.avgFollowing} icon={Icons.following} iconBg="stat-icon-purple" />
-      <NumberCard label="Avg Posts / User" value={stats.avgPosts} icon={Icons.posts} iconBg="stat-icon-amber" />
+    <div className="stats-page">
+      <div className="stats-grid">
+        <NumberCard label="Avg Followers / User" value={stats.avgFollowers} icon={Icons.followers} iconBg="stat-icon-blue" />
+        <NumberCard label="Avg Following / User" value={stats.avgFollowing} icon={Icons.following} iconBg="stat-icon-purple" />
+        <NumberCard label="Avg Posts / User" value={stats.avgPosts} icon={Icons.posts} iconBg="stat-icon-amber" />
 
-      <UserCard
-        label="Most Active User"
-        user={stats.mostActiveUser}
-        metricLabel="posts"
-        metricValue={stats.mostActiveUser?.postCount}
-        icon={Icons.activeUser}
-        iconBg="stat-icon-teal"
-      />
-
-      <PostCard
-        label="Most Liked Post"
-        post={stats.mostLikedPost}
-        metricLabel="likes"
-        metricValue={stats.mostLikedPost?.likeCount}
-        icon={Icons.likes}
-        iconBg="stat-icon-pink"
-      />
-
-      <PostCard
-        label="Most Commented Post"
-        post={stats.mostCommentedPost}
-        metricLabel="comments"
-        metricValue={stats.mostCommentedPost?.commentCount}
-        icon={Icons.comments}
-        iconBg="stat-icon-coral"
-      />
+        <UserCard
+          label="Most Active User"
+          user={stats.mostActiveUser}
+          metricLabel="posts"
+          metricValue={stats.mostActiveUser?.postCount}
+          icon={Icons.activeUser}
+          iconBg="stat-icon-teal"
+        />
+        <PostCard
+          label="Most Liked Post"
+          post={stats.mostLikedPost}
+          metricLabel="likes"
+          metricValue={stats.mostLikedPost?.likeCount}
+          icon={Icons.likes}
+          iconBg="stat-icon-pink"
+        />
+        <PostCard
+          label="Most Commented Post"
+          post={stats.mostCommentedPost}
+          metricLabel="comments"
+          metricValue={stats.mostCommentedPost?.commentCount}
+          icon={Icons.comments}
+          iconBg="stat-icon-coral"
+        />
+      </div>
     </div>
   );
 }
