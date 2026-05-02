@@ -594,8 +594,9 @@
   }
   
   .profile-body { padding-bottom: 70px; }
-  
-  /* Settings dropdown */
+/*
+  Settings Drop ----------------------------------------------------------------------------------------------------------------
+*/
   .settings-wrapper {
     position: relative;
     margin-left: auto;
@@ -649,7 +650,9 @@
   #delete-account-btn { color: #7e1c1c !important; }
   #delete-account-btn:hover { background: #fde8e8 !important; }
   
-  /* Confirm modal */
+ /*
+  Confirm ----------------------------------------------------------------------------------------------------------------
+  */
   .confirm-overlay {
     position: fixed;
     inset: 0;
@@ -1066,8 +1069,72 @@
     color: #999;
     font-size: 0.90rem;
   }
+
+  .text-post-content {
+    background: white;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 0.8rem;
+    width: 100%;
+}
+
+.text-post-content p {
+    color: var(--color-text-dark);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+    font-weight: 400;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+#posts-container.text-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#posts-container.text-layout .post-profile {
+    aspect-ratio: unset;
+    width: 100%;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    padding: 1rem;
+    transition: box-shadow 0.2s;
+}
+
+#posts-container.text-layout .post-profile:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    background: white;
+}
+
+#posts-container.text-layout .profile-text-post {
+    background: none;
+    padding: 0;
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+#posts-container.text-layout .profile-text-post p {
+    color: var(--color-text-dark);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: left;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+}
   
-  /* Post menu */
+  /*
+  Post Menu ----------------------------------------------------------------------------------------------------------------
+  */
   .menu-btn {
     width: 36px;
     height: 36px;
@@ -1132,7 +1199,9 @@
     pointer-events: auto;
   }
   
-  /* Caption edit */
+  /*
+  Caption Edit ----------------------------------------------------------------------------------------------------------------
+  */
   .caption-edit {
     display: flex;
     flex-direction: column;
@@ -1190,7 +1259,9 @@
   
   .caption-edit-icon:hover { color: var(--color-accent); }
   
-  /* Comments */
+  /*
+  Comments ----------------------------------------------------------------------------------------------------------------
+  */
   .comment-item {
     display: flex;
     align-items: flex-start;
@@ -1885,7 +1956,7 @@
       margin: 0;
     }
   
-    /* Profile fix inside grid */
+   
     body:has(.bottom-nav) .profile-body {
       grid-column: 2;
       grid-row: 1 / -1;
@@ -1911,7 +1982,9 @@
       overflow: visible !important;
     }
   
-    /* Profile layout */
+    /*
+  Profile Layout ----------------------------------------------------------------------------------------------------------------
+  */
     .profile-img-wrapper {
       top: 5rem;
       left: 50%;
@@ -1977,7 +2050,9 @@
       height: 2rem;
     }
   
-    /* Post page */
+    /*
+  Post Page ----------------------------------------------------------------------------------------------------------------
+  */
     .post-page {
       margin: 3rem;
       grid-template-columns: 3fr 1fr;
@@ -1989,21 +2064,29 @@
   
     .comments-part { max-height: none; }
   
-    /* Login/Register */
+    /*
+  Login & Register ----------------------------------------------------------------------------------------------------------------
+  */
     .login-body main h2 { font-size: 2rem; }
     .login-form { padding: 2.5rem; }
     .login-buttons { min-width: 60%; }
     .register-body main h2 { font-size: 2rem; }
     .register-form { padding: 2.5rem; min-width: 500px; }
   
-    /* Stats */
+    /*
+  Stats ----------------------------------------------------------------------------------------------------------------
+  */
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
   
-    /* Edit */
+  /*
+  Edit ----------------------------------------------------------------------------------------------------------------
+  */
     .edit-body main { padding-top: 3rem; }
     .edit-container { padding: 2.5rem; }
   
-    /* Create Post */
+  /*
+  Create Post ----------------------------------------------------------------------------------------------------------------
+  */
     .create-post-body {
       display: grid;
       grid-template-columns: 1fr 1fr auto;
