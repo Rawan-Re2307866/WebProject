@@ -2,12 +2,11 @@
   "name": "phase-two",
   "version": "0.1.0",
   "private": true,
-"scripts": {
-  "dev": "next dev",
-  "build": "bunx prisma generate && next build",
-  "postinstall": "bunx prisma generate",
-  "start": "next start"
-},
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
   "dependencies": {
     "@faker-js/faker": "^10.4.0",
     "@libsql/client": "^0.17.3",
