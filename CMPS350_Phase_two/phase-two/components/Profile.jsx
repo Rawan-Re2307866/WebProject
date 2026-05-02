@@ -108,7 +108,7 @@ export default function Profile({user, currentUserId}) {
       Text
     </button>
   </div>
-  <div className="posts" id="posts-container">
+  <div id="posts-container" className={activeTab === "text" ? "text-layout" : ""}>
     {displayedPosts.length === 0 ? (
         <p style={{ textAlign: "center", color: "#999", padding: "2rem" }}>
         No {activeTab} posts yet.

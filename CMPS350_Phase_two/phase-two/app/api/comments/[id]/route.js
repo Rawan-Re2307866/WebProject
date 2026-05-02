@@ -3,7 +3,7 @@ import { getSession } from "@/lib/session";
 import { create, remove, read } from "@/repos/comments";
 
 export async function POST(request, { params }) {
-    const session = getSession();
+    const session = await getSession();
 
     if (!session) {
         return NextResponse.json(
@@ -20,10 +20,10 @@ export async function POST(request, { params }) {
             { status: 400 }
         );
     }
-
+    const {id} = await params;
     const result = await create({
         content: body.content.trim(),
-        postId: params.id,
+        postId: id,
         userId: session.userId
     });
 
@@ -38,14 +38,15 @@ export async function POST(request, { params }) {
 
 
 export async function DELETE(request, { params }) {
-    const session = getSession();
+    const session = await getSession();
     if (!session) {
         return NextResponse.json(
             { error: "Not logged in" },
             { status: 401 }
         );
     }
-    const result = await read(params.id);
+    const {id} = await params;
+    const result = await read(id);
     if (result.error) {
         return NextResponse.json(result.error, {
             status: result.error.status || 500
@@ -58,7 +59,7 @@ export async function DELETE(request, { params }) {
             { status: 403 }
         );
     }
-    const deleteResult = await remove(params.id);
+    const deleteResult = await remove(id);
     if (deleteResult.error) {
         return NextResponse.json(deleteResult.error, {
             status: deleteResult.error.status || 500

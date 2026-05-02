@@ -7,7 +7,7 @@ export default async function ProfilePage({ params }) {
     const session = await getSession();
     if (!session) redirect("/login");
 
-    const { id } = await params; // ← await params in Next.js 16
+    const { id } = await params; 
     const result = await read(id);
     if (result.error) redirect('/');
 

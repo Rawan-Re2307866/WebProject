@@ -3,7 +3,7 @@ import { getSession } from "@/lib/session";
 import { read, update, remove } from "@/repos/posts";
 
 export async function GET(request, { params }) {
-  const { id } = params;
+  const { id } = await params;
   const result = await read(id);
   if (result.error) {
     return NextResponse.json(result.error, {
@@ -14,8 +14,8 @@ export async function GET(request, { params }) {
 }
 
 export async function PATCH(request, { params }) {
-  const { id } = params;
-  const session = getSession();
+  const { id } = await params;
+  const session = await getSession();
 
   if (!session) {
     return NextResponse.json(
@@ -53,8 +53,8 @@ export async function PATCH(request, { params }) {
 }
 
 export async function DELETE(request, { params }) {
-  const { id } = params;
-  const session = getSession();
+  const { id } = await params;
+  const session = await getSession();
 
   if (!session) {
     return NextResponse.json(

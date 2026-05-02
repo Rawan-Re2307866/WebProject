@@ -8,6 +8,7 @@ export default function Settings() {
 
     const router = useRouter();
     const [open, setOpen] = useState(false);
+    const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
     async function handleLogout() {
         await fetch('/api/auth/logout', {
@@ -17,8 +18,7 @@ export default function Settings() {
     }
 
     async function handleDeleteAccount() {
-        if(!confirm("Are you sure you want to delete your account?")) return;
-        
+
         const session = await fetch('/api/auth/session').then(r => r.json());
         const res = await fetch(`/api/users/${session.userId}`, {method:"DELETE"});
         if(res.ok){
@@ -29,6 +29,18 @@ export default function Settings() {
 
     return (
       <>
+      {showDeleteConfirm && (
+    <div className="confirm-overlay">
+        <div className="confirm-modal">
+            <h3>Delete Account?</h3>
+            <p>This will permanently delete your account and all your posts.</p>
+            <div className="confirm-btns">
+                <button className="confirm-cancel-btn" onClick={() => setShowDeleteConfirm(false)}>Cancel</button>
+                <button className="confirm-delete-btn" onClick={handleDeleteAccount}>Delete</button>
+            </div>
+        </div>
+    </div>
+)}
       <div className="settings-wrapper">
           <button className="header-settings-btn" id="settings-btn" onClick={() => setOpen(!open)}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -45,7 +57,7 @@ export default function Settings() {
                       </svg>
                       Logout
                   </button>
-                  <button id="delete-account-btn" onClick={handleDeleteAccount}>
+                  <button id="delete-account-btn" onClick={() => setShowDeleteConfirm(true)}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <polyline points="3 6 5 6 21 6"/>
                           <path d="M19 6l-1 14H6L5 6"/>

@@ -82,18 +82,16 @@ export default function Feed({ currentUserId }) {
 
             {/* Content (clickable -> post detail) */}
             <Link href={`/post/${post.id}`} style={{ display: 'block' }}>
-              <div className="post-content" style={{ cursor: 'pointer' }}>
-                {post.type === 'image' ? (
-                  <img
-                    src={post.content}
-                    alt="Post"
-                    style={{ width: '100%', objectFit: 'cover' }}
-                  />
-                ) : (
-                  <p>{post.content}</p>
-                )}
-              </div>
-            </Link>
+    {post.type === 'image' ? (
+        <div className="post-content" style={{ cursor: 'pointer' }}>
+            <img src={post.content} alt="Post" style={{ width: '100%', objectFit: 'cover' }} />
+        </div>
+    ) : (
+        <div className="text-post-content">
+            <p>{post.content}</p>
+        </div>
+    )}
+</Link>
 
             {/* Like + comment actions */}
             <div className="post-actions">

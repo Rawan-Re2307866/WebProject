@@ -103,7 +103,7 @@ export default function Register() {
                     </svg>}
                 </button>
             </div>
-            {error && <span style={{color:"red"}}>{error}</span>}
+            {error && <div className="error-message">{error}</div>}
             <button type="submit" className="register-btn">Sign up</button>
 
             <div className="signup">

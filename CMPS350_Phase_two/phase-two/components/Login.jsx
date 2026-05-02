@@ -10,6 +10,7 @@ export default function Login() {
     const [showPassword, setShowPassword] = useState(false);
     const [usernameError, setUsernameError] = useState("");
     const [passwordError, setPasswordError] = useState("");
+    const [error, setError] = useState("");
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -46,7 +47,8 @@ export default function Login() {
         if (res.ok) {
             router.push("/");
         } else {
-            alert("Invalid username or password");
+            const data = await res.json().catch(() => ({}));
+        setError(data.error || "Invalid username or password");
         }
     }
 
@@ -93,7 +95,7 @@ export default function Login() {
                             </button>
                         </div>
                         <span id="passwordError">{passwordError}</span>
-
+                        {error && <div className="error-message">{error}</div>}
                         <button type="submit" className="login-btn">Log In</button>
 
                         <div className="signup">
