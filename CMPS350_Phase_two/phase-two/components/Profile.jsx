@@ -7,6 +7,9 @@ import Settings from "./Settings";
 
 export default function Profile({ user, currentUserId }) {
   const router = useRouter();
+  console.log(user);
+  console.log("POSTS:", user.posts);
+  console.log("COUNT:", user.posts?.length);
 
   const [activeTab, setActiveTab] = useState("image");
   const [isFollowing, setIsFollowing] = useState(
@@ -130,4 +133,5 @@ export default function Profile({ user, currentUserId }) {
       </main>
     </div>
   );
+
 }
