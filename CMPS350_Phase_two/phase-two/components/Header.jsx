@@ -9,7 +9,7 @@ export default function Header() {
 
 
     const showSearch = pathname === "/"
-    if (pathname.startsWith("/profile")) return null;
+    if (pathname === "/profile") return null;
 
 
     return (

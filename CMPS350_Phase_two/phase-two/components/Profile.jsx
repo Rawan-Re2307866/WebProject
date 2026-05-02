@@ -72,7 +72,7 @@ export default function Profile({user, currentUserId}) {
 
       </div>
 {isOwnProfile? (
-      <button className="edit-btn" onClick={()=>router.push("/edit")}>Edit Profile</button>
+      <button className="edit-btn" onClick={()=>router.push("/profile/edit")}>Edit Profile</button>
 ) :
 (
     <button className="edit-btn" onClick={handleFollow}>{isFollowing? "Unfollow" : "Follow"}</button>
