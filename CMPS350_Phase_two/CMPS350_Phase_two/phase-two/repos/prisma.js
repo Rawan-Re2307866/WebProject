@@ -3,7 +3,7 @@ import { PrismaClient } from "../prisma/client/index.js";
 
 export default new PrismaClient({
   adapter: new PrismaLibSql({
-    url: `file:${process.cwd()}/prisma/db/dev.db`,
+    url: process.env.DATABASE_URL ?? "",
   }),
   log: ["query"],
 });
