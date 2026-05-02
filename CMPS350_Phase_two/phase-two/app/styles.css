@@ -2262,3 +2262,81 @@ Stats---------------------------------------------------------------------------
 .stats-error {
   color: #7e1c1c;
 }
+
+/*fix*/
+body:has(.bottom-nav) .profile-body {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+body:has(.bottom-nav) .profile-body .profile-header {
+  grid-column: unset;
+  grid-row: unset;
+}
+
+body:has(.bottom-nav) .profile-body main {
+  grid-column: unset;
+  grid-row: unset;
+  overflow-y: unset;
+  padding-bottom: 0;
+}
+
+body:has(.bottom-nav) .profile-body main {
+  grid-column: unset !important;
+  grid-row: unset !important;
+  overflow-y: unset !important;
+}
+
+body:has(.bottom-nav) .profile-body .profile-header {
+  grid-column: unset !important;
+  grid-row: unset !important;
+}
+
+.profile-body .profile-card {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+.profile-body .profile-content {
+  display: block !important;
+  visibility: visible !important;
+}
+
+@media screen and (min-width: 768px) {
+  .profile-img-wrapper {
+      top: 5rem;
+      left: 50%;
+      transform: translateX(-50%);
+  }
+
+  .profile-img {
+      width: 8rem;
+      height: 8rem;
+  }
+
+  .profile-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 7rem;
+  }
+
+  .profile-top-row {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+  }
+
+  .user-info {
+      text-align: center;
+      align-items: center;
+  }
+
+  .stats-and-btn {
+      align-items: center;
+  }
+}

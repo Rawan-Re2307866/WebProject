@@ -54,7 +54,7 @@ export async function PATCH(request, { params }) {
 
 export async function DELETE(request, { params }) {
   const { id } = params;
-  const session = getSession();
+  const session = await getSession();
   if (!session) {
     return NextResponse.json(
       { error: "Not logged in" },

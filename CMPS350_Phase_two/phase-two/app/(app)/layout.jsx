@@ -1,20 +1,16 @@
-import Search from "@/components/Search";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getSession } from "@/lib/session";
 
 export default async function AppLayout({ children }) {
-  const session = getSession();
+  const session = await getSession();
   const currentUserId = session?.userId;
+  console.log("currentUserId:", currentUserId);
 
   return (
     <>
-      <header className="top-bar">
-        <img src="/images/logo.png" alt="AR squared logo" className="logo" />
-        <Search />
-      </header>
-
-      <main>{children}</main>
-
+      <Header />
+      {children}
       <Footer currentUserId={currentUserId} />
     </>
   );
