@@ -42,3 +42,4 @@ export async function POST(request) {
     }
     return NextResponse.json(result.data, { status: 201 });
 }
+router.refresh();
