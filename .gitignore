@@ -15,3 +15,4 @@ Thumbs.db
 # Logs
 *.log
 CMPS350_Phase_two/CMPS350_Phase_two/phase-two/prisma/db/dev.db
+*.db
