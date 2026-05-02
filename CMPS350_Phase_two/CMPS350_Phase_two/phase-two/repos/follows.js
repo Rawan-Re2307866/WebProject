@@ -18,6 +18,7 @@ export async function toggle(followerId,followingId){
         return {data, following: true};
 
     }catch(e){
+        
         return {
             error: {
                 message: e.message,
