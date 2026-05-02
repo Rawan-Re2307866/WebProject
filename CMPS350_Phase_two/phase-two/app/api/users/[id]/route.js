@@ -4,7 +4,7 @@ import { read, update, remove } from "@/repos/users";
 import bcrypt from "bcrypt";
 
 export async function GET(request, { params }) {
-  const { id } = params;
+  const { id } = await params;
 
   const result = await read(id);
 
@@ -22,7 +22,7 @@ export async function GET(request, { params }) {
 }
 
 export async function PATCH(request, { params }) {
-  const { id } = params;
+  const { id } = await params;
   const session = getSession();
   
   if (!session) {
@@ -53,7 +53,7 @@ export async function PATCH(request, { params }) {
 }
 
 export async function DELETE(request, { params }) {
-  const { id } = params;
+  const { id } = await params;
   const session = await getSession();
   if (!session) {
     return NextResponse.json(

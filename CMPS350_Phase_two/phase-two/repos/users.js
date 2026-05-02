@@ -58,6 +58,24 @@ export async function update(id, data) {
 
 export async function remove(id) {
   try {
+    
+    await prisma.like.deleteMany({ 
+      where: { userId: id } 
+    });
+    await prisma.comment.deleteMany({ 
+      where: { userId: id } 
+    });
+    await prisma.follow.deleteMany({ 
+      where: { OR: [{ followerId: id }, { followingId: id }] } 
+    });
+    
+    const posts = await prisma.post.findMany({ where: { userId: id } });
+    for (const post of posts) {
+      await prisma.like.deleteMany({ where: { postId: post.id } });
+      await prisma.comment.deleteMany({ where: { postId: post.id } });
+    }
+    await prisma.post.deleteMany({ where: { userId: id } });
+    
     const data = await prisma.user.delete({ where: { id } });
     return { data };
   } catch (e) {

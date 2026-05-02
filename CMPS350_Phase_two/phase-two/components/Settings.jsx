@@ -18,7 +18,9 @@ export default function Settings() {
 
     async function handleDeleteAccount() {
         if(!confirm("Are you sure you want to delete your account?")) return;
-        const res = await fetch('/api/users/me', {method:"DELETE"});
+        
+        const session = await fetch('/api/auth/session').then(r => r.json());
+        const res = await fetch(`/api/users/${session.userId}`, {method:"DELETE"});
         if(res.ok){
             router.push("/login")
         }
